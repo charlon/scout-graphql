@@ -9,7 +9,7 @@ class SpotExtendedInfoSerializer(serializers.ModelSerializer):
 
 
 class SpotSerializer(serializers.ModelSerializer):
-    spotextendedinfo = serializers.StringRelatedField(many=True)
+    spotextendedinfo = SpotExtendedInfoSerializer(many=True, read_only=True)
 
     class Meta:
         model = Spot
