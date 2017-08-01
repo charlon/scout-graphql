@@ -1,16 +1,19 @@
 # scout-server
 Spotseeker server implementation using Django REST Framework
 
-Installation (in your existing or empty project)
+## Installation (in your existing or empty project)
 
-  $ pip install -e git+https://github.com/charlon/scout-server/#egg=scout_server
+    $ pip install -e git+https://github.com/charlon/scout-server/#egg=scout_server
 
 Project settings.py
 
-  Add 'scout_server.apps.ScoutServerConfig' and 'rest_framework' to INSTALLED_APPS
+    Add 'scout_server.apps.ScoutServerConfig' and 'rest_framework' to INSTALLED_APPS
 
 Project urls.py
 
-  Add route to scout_server app /scout/api/v1/
+    Add route to scout_server app /scout/api/v1/
+    url(r'^scout/', include('scout_server.urls'))
 
-In your project/app...
+## View your API...
+
+    Go to localhost:8000/scout/spots/
