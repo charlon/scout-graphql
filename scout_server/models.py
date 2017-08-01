@@ -120,7 +120,7 @@ class SpotExtendedInfo(models.Model):
     """
     key = models.CharField(max_length=50)
     value = models.CharField(max_length=350)
-    spot = models.ForeignKey(Spot)
+    spot = models.ForeignKey(Spot, related_name='spotextendedinfo', on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = "Spot extended info"
