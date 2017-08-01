@@ -1,50 +1,55 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from scout_server.models import Spot
 from scout_server.serializers import SpotSerializer
+from django.http import Http404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
 
 
-@api_view(['GET', 'POST'])
-def spot_list(request, format=None):
-	if request.method == 'GET':
-		spots = Spot.objects.all()
-		serializer = SpotSerializer(spots, many=True)
-		return Response(serializer.data)
-
-	if request.method == 'POST':
-		data = JSONParser().parse(request)
-		serializer = SpotSerializer(data=data)
-		if serializer.is_valid():
-			serializer.save()
-			return Response(serializer.data, status=201)
-		return Response(serializer.errors, status=400)
-
-@api_view(['GET', 'PUT', 'DELETE'])
-def spot_detail(request, pk, format=None):
+class SpotList(APIView):
     """
-    Retrieve, update or delete a code snippet.
+    List all spots, or create a new spot.
     """
-    try:
-        spot = Spot.objects.get(pk=pk)
-    except Spot.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+    def get(self, request, format=None):
+        spots = Spot.objects.all()
+        serializer = SpotSerializer(spots, many=True)
+        return Response(serializer.data)
 
-    if request.method == 'GET':
+    def post(self, request, format=None):
+        serializer = SpotSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class SpotDetail(APIView):
+    """
+    Retrieve, update or delete a spot instance.
+    """
+    def get_object(self, pk):
+        try:
+            return Spot.objects.get(pk=pk)
+        except Spot.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        spot = self.get_object(pk)
         serializer = SpotSerializer(spot)
         return Response(serializer.data)
 
-    elif request.method == 'PUT':
-        data = JSONParser().parse(request)
-        serializer = SpotSerializer(spot, data=data)
+    def put(self, request, pk, format=None):
+        spot = self.get_object(pk)
+        serializer = SpotSerializer(spot, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
+    def delete(self, request, pk, format=None):
+        spot = self.get_object(pk)
         spot.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
