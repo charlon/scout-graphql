@@ -48,7 +48,7 @@ class SpotType(models.Model):
     """
     name = models.SlugField(max_length=50)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -77,7 +77,7 @@ class Spot(models.Model):
                                    default=None, unique=True,
                                    validators=[validate_slug])
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -106,7 +106,7 @@ class SpotAvailableHours(models.Model):
     class Meta:
         verbose_name_plural = "Spot available hours"
 
-    def __unicode__(self):
+    def __str__(self):
         return "%s: %s, %s-%s" % (self.spot.name,
                                   self.day,
                                   self.start_time,
@@ -126,5 +126,5 @@ class SpotExtendedInfo(models.Model):
         verbose_name_plural = "Spot extended info"
         unique_together = ('spot', 'key')
 
-    def __unicode__(self):
-        return "%s[%s: %s]" % (self.spot.name, self.key, self.value)
+    def __str__(self):
+        return "%s: %s" % (self.key, self.value)
