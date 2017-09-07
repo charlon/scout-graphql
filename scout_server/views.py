@@ -11,6 +11,7 @@ class SpotList(generics.ListCreateAPIView):
     List all spots, or create a new spot.
     """
     queryset = Spot.objects.all()
+    queryset = SpotSerializer.setup_eager_loading(SpotSerializer, queryset)
     serializer_class = SpotSerializer
 
 

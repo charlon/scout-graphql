@@ -42,3 +42,7 @@ class SpotSerializer(serializers.ModelSerializer):
             SpotAvailableHours.objects.create(spot=spot, **spotavailablehours_data)
         return spot
 
+    def setup_eager_loading(cls, queryset):
+        queryset = queryset.prefetch_related('spotextendedinfo')
+        queryset = queryset.prefetch_related('spotavailablehours_set')
+        return queryset
