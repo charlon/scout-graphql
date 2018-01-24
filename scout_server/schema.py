@@ -30,9 +30,11 @@ class Query(object):
     all_spotavailablehours = graphene.List(SpotAvailableHoursType)
     all_spotextendedinfo = graphene.List(SpotExtendedInfoType)
 
-    spot = graphene.Field(SpotType,
-                          id=graphene.Int(),
-                          building_name=graphene.String(),)
+    spot_by_id = graphene.Field(SpotType,
+                                id=graphene.Int(),)
+
+    spots_by_building_name = graphene.List(SpotType,
+                                           building_name=graphene.String(),)
 
     def resolve_all_spottypes(self, info, **kwargs):
         return SpotType.objects.all()
@@ -46,11 +48,16 @@ class Query(object):
     def resolve_all_spotextendedinfo(self, info, **kwargs):
         return SpotExtendedInfo.objects.all()
 
-    def resolve_spot(self, info, **kwargs):
+    def resolve_spot_by_id(self, info, **kwargs):
         id = kwargs.get('id')
-        building_name = kwargs.get('building_name')
 
         if id is not None:
             return Spot.objects.get(pk=id)
+
+    def resolve_spots_by_building_name(self, info, **kwargs):
+        building_name = kwargs.get('building_name')
+
+        if building_name is not None:
+            return Spot.objects.filter(building_name=building_name)
 
         return None
