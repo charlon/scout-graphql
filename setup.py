@@ -15,6 +15,7 @@ setup(
         'setuptools',
         'django',
         'djangorestframework',
+        'graphene_django',
     ],
     license='Apache License, Version 2.0',  # example license
     description='Django REST Framework implementation of SpotSeeker Server.',
