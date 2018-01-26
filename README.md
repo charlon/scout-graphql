@@ -67,12 +67,12 @@ AWS CodeStar user guide.
         $ git clone https://github.com/charlon/scout-server
         $ cd scout-server
 
-2. Create a Python virtual environment for your Django project. This virtual
+2. Create a Python3 virtual environment for your Django project. This virtual
    environment allows you to isolate this project and install any packages you
    need without affecting the system Python installation. At the terminal, type
    the following command:
 
-        $ virtualenv .
+        $ python3 -m venv .
 
 3. Activate the virtual environment and change into the working directory:
 
