@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+from django.shortcuts import render
 from scout_server.models import Spot
 from scout_server.serializers import SpotSerializer
 from rest_framework import generics

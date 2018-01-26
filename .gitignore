@@ -52,7 +52,11 @@ coverage.xml
 
 # Django stuff:
 *.log
-local_settings.py
+db.sqlite3
+*.sqlite3
+share/
+src/
+static/CACHE
 
 # Flask stuff:
 instance/
@@ -79,13 +83,15 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
-# dotenv
+# dotenv (environ)
 .env
+*.env
 
 # virtualenv
 bin/
 include/
 lib/
+local/
 pip-selfcheck.json
 .venv
 venv/
