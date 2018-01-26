@@ -46,7 +46,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'graphene_django',
-    'scout_server.apps.ScoutServerConfig',
+    'scout_server',
     'scout_clients'
 ]
 
