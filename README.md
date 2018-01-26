@@ -5,8 +5,8 @@ This sandbox helps get you started with creating and deploying the Scout Server
 application in Django. We will be creating an API server as well as various
 client application demos that consume the APIs.
 
-Requirements
-------------
+System Requirements
+-------------------
 * Python (3+)
 * Django (2+)
 * Virtualenv
@@ -74,39 +74,48 @@ AWS CodeStar user guide.
 
         $ virtualenv .
 
-3. Activate the virtual environment:
+3. Activate the virtual environment and change into the working directory:
 
         $ source bin/activate
+        (scout-server)$ cd serverproject
 
 4. Copy the env.example file into .env. This allows you set environment variables
    for running your application locally. After copying the sample, edit the
    necessary environment variables to suit your local development needs. You
    will also need to load the local environment files by running the source command:
 
-        (scout-server)$ cd serverproject
         (scout-server)$ cp serverproject/settings/env.example serverproject/settings/.env
 
-5. Install Python dependencies for this project:
+5. Update the .env file using your preferred editor. For the purposes of this
+   project, you should update the SECRET_KEY variable.
+
+6. Install Python dependencies for this project:
 
         (scout-server)$ pip install -r requirements-local.txt
 
-6. Start the Django server:
+7. Apply any migrations (if needed):
+
+        (scout-server)$ python manage.py makemigrations --settings=serverproject.settings.local
+        (scout-server)$ python manage.py migrate --settings=serverproject.settings.local
+
+8. Get an updated 'db.sqlite3' database from Char or Craig! This file should be
+   placed at the root of the working project directory.
+
+9. Start the Django server:
 
         (scout-server)$ python manage.py runserver 0:8000 --settings=serverproject.settings.local
-
-5. Open http://localhost:8000/ in a web browser to view your application.
 
 View your APIs
 ---------------
 
 Once your Django server has started, you will be able to view your APIs
-using the online viewer provided by each respective tool.
+using the online viewer provided by each tool.
 
 Django REST Framework: http://localhost:8000/api/v1/spots/
 
 GraphQL: http://localhost:8000/graphql/
 
-Here is a sample query to get you started:
+Here is a sample GraphQL query to get you started:
 
         query {
           allSpots {
