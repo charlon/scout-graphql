@@ -98,8 +98,10 @@ AWS CodeStar user guide.
         (scout-server)$ python manage.py makemigrations --settings=serverproject.settings.local
         (scout-server)$ python manage.py migrate --settings=serverproject.settings.local
 
-8. Get an updated 'db.sqlite3' database from Char or Craig! This file should be
-   placed at the root of the working project directory.
+8. Get an updated 'db.sqlite3' database from Char or Craig for test data. This
+   file should be placed at the following location:
+
+        /scout-server/serverproject/serverproject/db.sqlite3
 
 9. Start the Django server:
 
