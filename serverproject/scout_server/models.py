@@ -30,7 +30,7 @@ from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.core.validators import validate_slug
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.files.uploadedfile import UploadedFile
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 import hashlib
 import datetime
@@ -97,7 +97,7 @@ class SpotAvailableHours(models.Model):
         ('su', 'sunday'),
     )
 
-    spot = models.ForeignKey(Spot)
+    spot = models.ForeignKey(Spot, on_delete=models.CASCADE)
     day = models.CharField(max_length=3, choices=DAY_CHOICES)
 
     start_time = models.TimeField()

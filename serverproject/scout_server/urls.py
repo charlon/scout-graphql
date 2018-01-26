@@ -1,4 +1,4 @@
-from django.conf.urls import path, re_path
+from django.urls import include, path, re_path
 from rest_framework.urlpatterns import format_suffix_patterns
 from scout_server import views
 
