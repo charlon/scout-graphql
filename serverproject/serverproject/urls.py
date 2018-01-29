@@ -18,8 +18,8 @@ from django.urls import include, path, re_path
 from graphene_django.views import GraphQLView
 
 urlpatterns = [
+    path('', include('scout_clients.urls')),
     #path('admin/', admin.site.urls),
     path('api/v1/', include('scout_server.urls')),
-    path('demo/', include('scout_clients.urls')),
     path('graphql/', GraphQLView.as_view(graphiql=True)),
 ]
