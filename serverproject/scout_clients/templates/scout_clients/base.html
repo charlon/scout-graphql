@@ -1,0 +1,40 @@
+<!-- base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="https://getbootstrap.com/docs/3.3/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+    <!-- jquery + turbolinks -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.3/turbolinks.js"></script>-->
+    <!--<script type="text/javascript" src="/static/js/main.js"></script>-->
+
+  </head>
+  <body>
+
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="/demo/">Home</a></li>
+          </ul>
+        </nav>
+        <div class="text-muted" style="font-size:24px; font-weight:500;">Scout Clients</div>
+      </div>
+
+      {% block content %}{% endblock %}
+
+      <footer class="footer">
+        <p>© 2016 Your Name Here</p>
+      </footer>
+    </div> <!-- /container -->
+  </body>
+</html>
