@@ -36,6 +36,10 @@ class Query(object):
     spots_by_building_name = graphene.List(SpotType,
                                            building_name=graphene.String(),)
 
+    spots_by_extended_info = graphene.List(SpotType,
+                                           key=graphene.String(),
+                                           value=graphene.String(),)
+
     def resolve_all_spottypes(self, info, **kwargs):
         return SpotType.objects.all()
 
@@ -61,3 +65,13 @@ class Query(object):
             return Spot.objects.filter(building_name=building_name)
 
         return None
+
+    def resolve_spots_by_extended_info(self, info, **kwargs):
+        key = kwargs.get('key')
+        value = kwargs.get('value')
+
+        if key == 'app_type' and value == 'study':
+            return Spot.objects.exclude(spotextendedinfo__key='app_type')
+        elif key is not None and value is not None:
+            return Spot.objects.filter(spotextendedinfo__key=key,
+                                       spotextendedinfo__value=value)
