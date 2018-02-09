@@ -10,9 +10,9 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
-def about(request):
-    template = loader.get_template('scout_clients/about.html')
+def react(request):
+    template = loader.get_template('scout_clients/demo/react.html')
     context = {
-        'hello': "about scout",
+        'hello': "react",
     }
     return HttpResponse(template.render(context, request))
