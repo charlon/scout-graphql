@@ -100,8 +100,13 @@ AWS CodeStar user guide.
    is to create a nodeenv (similar to a virtualenv). You can activate after it
    the environment has been setup.
 
+   Note: If you run into the [SSL: CERTIFICATE_VERIFY_FAILED] error on Mac OS, you
+   may need to run the 'Install Certificates.command' file found in your
+   'Applications/Python 3.6' directory.
+
         (scout-server)$ nodeenv env
         (scout-server)$ . env/bin/activate
+
 
 6. Install the node dependencies for the React Demo.
 
