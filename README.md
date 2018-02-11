@@ -72,7 +72,8 @@ AWS CodeStar user guide.
    need without affecting the system Python installation. At the terminal, type
    the following command:
 
-        $ pip3 install virtualenv (optional)
+        $ pip3 install virtualenv (optional )
+
         $ python3 -m virtualenv . (mac os)
         $ virtualenv --python=python3 . (linux os)
 
@@ -95,14 +96,26 @@ AWS CodeStar user guide.
 
         (scout-server)$ pip install -r requirements-local.txt
 
+6. For the React Demo. You will need to use Node. The best way to isolate Node
+   is to create a nodeenv (similar to a virtualenv). You can activate after it
+   the environment has been setup.
+
+        (scout-server)$ nodeenv env
+        (scout-server)$ . env/bin/activate
+
+6. Install the node dependencies for the React Demo.
+
+        (env)(scout-server)$ npm install
+
+
 7. Apply any migrations (if needed):
 
-        (scout-server)$ python manage.py makemigrations --settings=serverproject.settings.local
-        (scout-server)$ python manage.py migrate --settings=serverproject.settings.local
+        (env)(scout-server)$ python manage.py makemigrations --settings=serverproject.settings.local
+        (env)(scout-server)$ python manage.py migrate --settings=serverproject.settings.local
 
 8. Start the Django server:
 
-        (scout-server)$ python manage.py runserver 0:8000 --settings=serverproject.settings.local
+        (env)(scout-server)$ python manage.py runserver 0:8000 --settings=serverproject.settings.local
 
 View your APIs
 ---------------
