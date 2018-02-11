@@ -72,7 +72,8 @@ AWS CodeStar user guide.
    need without affecting the system Python installation. At the terminal, type
    the following command:
 
-        $ pip3 install virtualenv (optional)
+        $ pip3 install virtualenv (optional python3 installation)
+        
         $ python3 -m virtualenv . (mac os)
         $ virtualenv --python=python3 . (linux os)
 
