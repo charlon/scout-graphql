@@ -112,3 +112,6 @@ pyvenv.cfg
 
 # mypy
 .mypy_cache/
+
+# node
+/node_modules
