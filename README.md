@@ -107,8 +107,7 @@ Adding React Demo
    may need to run the 'Install Certificates.command' file found in your
    'Applications/Python 3.6' directory.
 
-        (scout-server)$ nodeenv env
-        (scout-server)$ . env/bin/activate
+        (scout-server)$ nodeenv -p
 
 8. Install the node dependencies for the React Demo.
 
