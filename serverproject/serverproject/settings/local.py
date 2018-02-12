@@ -141,7 +141,7 @@ GRAPHENE = {
 #webpack loader (react)
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'assets/bundles/',
+        'BUNDLE_DIR_NAME': 'react/bundles/',
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
