@@ -107,23 +107,24 @@ Adding React Demo
    may need to run the 'Install Certificates.command' file found in your
    'Applications/Python 3.6' directory.
 
+        (scout-server)$ cd ..
         (scout-server)$ nodeenv -p
 
 8. Install the node dependencies for the React Demo.
 
-        (env)(scout-server)$ npm install
+        (scout-server)$ npm install
 
 Starting Django Server
 ----------------------
 
 10. Apply any migrations (if needed):
 
-        (env)(scout-server)$ python manage.py makemigrations --settings=serverproject.settings.local
-        (env)(scout-server)$ python manage.py migrate --settings=serverproject.settings.local
+        (scout-server)$ python manage.py makemigrations --settings=serverproject.settings.local
+        (scout-server)$ python manage.py migrate --settings=serverproject.settings.local
 
 11. Start the Django server:
 
-        (env)(scout-server)$ python manage.py runserver 0:8000 --settings=serverproject.settings.local
+        (scout-server)$ python manage.py runserver 0:8000 --settings=serverproject.settings.local
 
 Start Webpack
 -------------
@@ -132,7 +133,7 @@ Start Webpack
    and compile bundles automatically when changes are made to the source files.
    You'll need to restart this command if you make changes to the webpack config.
 
-        (env)(scout-server)$ ./node_modules/.bin/webpack --config webpack.config.js --watch
+        (scout-server)$ ./node_modules/.bin/webpack --config serverproject/webpack.config.js --watch
 
 View your APIs
 ---------------
