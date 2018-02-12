@@ -96,9 +96,12 @@ AWS CodeStar user guide.
 
         (scout-server)$ pip install -r requirements-local.txt
 
-6. For the React Demo. You will need to use Node. The best way to isolate Node
+Adding React Demo
+-----------------
+
+7. For the React Demo. You will need to use Node. The best way to isolate Node
    is to create a nodeenv (similar to a virtualenv). You can activate after it
-   the environment has been setup.
+   the base Python environment has been setup.
 
    Note: If you run into the [SSL: CERTIFICATE_VERIFY_FAILED] error on Mac OS, you
    may need to run the 'Install Certificates.command' file found in your
@@ -107,20 +110,30 @@ AWS CodeStar user guide.
         (scout-server)$ nodeenv env
         (scout-server)$ . env/bin/activate
 
-
-6. Install the node dependencies for the React Demo.
+8. Install the node dependencies for the React Demo.
 
         (env)(scout-server)$ npm install
 
+Starting Django Server
+----------------------
 
-7. Apply any migrations (if needed):
+10. Apply any migrations (if needed):
 
         (env)(scout-server)$ python manage.py makemigrations --settings=serverproject.settings.local
         (env)(scout-server)$ python manage.py migrate --settings=serverproject.settings.local
 
-8. Start the Django server:
+11. Start the Django server:
 
         (env)(scout-server)$ python manage.py runserver 0:8000 --settings=serverproject.settings.local
+
+Start Webpack
+-------------
+
+9. Start the webpack "watch mode". This will leave the webpack compiler running
+   and compile bundles automatically when changes are made to the source files.
+   You'll need to restart this command if you make changes to the webpack config.
+
+        (env)(scout-server)$ ./node_modules/.bin/webpack --config webpack.config.js --watch
 
 View your APIs
 ---------------

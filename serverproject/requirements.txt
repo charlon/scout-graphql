@@ -1,3 +1,4 @@
 django
 djangorestframework
 graphene_django
+django-webpack-loader

@@ -1,5 +1,7 @@
 {% extends "scout_clients/base.html" %}
 
+{% load render_bundle from webpack_loader %}
+
 {% block title %}Demo: React{% endblock %}
 {% block content %}
 <div class="jumbotron">
@@ -8,67 +10,10 @@
 </div>
 
 <div class="row marketing">
-    <h2>React component hre</h2>
 
-    <div class="col-lg-6" style="margin-top:2em;">
-        <ul class="media-list">
-          <li class="media">
-            <div class="media-left">
-              <a href="#"><img class="media-object" src="http://via.placeholder.com/60x60" alt="..."></a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              <p>asdfasf</p>
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-left">
-              <a href="#"><img class="media-object" src="http://via.placeholder.com/60x60" alt="..."></a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              <p>asdfasf</p>
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-left">
-              <a href="#"><img class="media-object" src="http://via.placeholder.com/60x60" alt="..."></a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              <p>asdfasf</p>
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-left">
-              <a href="#"><img class="media-object" src="http://via.placeholder.com/60x60" alt="..."></a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              <p>asdfasf</p>
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-left">
-              <a href="#"><img class="media-object" src="http://via.placeholder.com/60x60" alt="..."></a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              <p>asdfasf</p>
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-left">
-              <a href="#"><img class="media-object" src="http://via.placeholder.com/60x60" alt="..."></a>
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading">Media heading</h4>
-              <p>asdfasf</p>
-            </div>
-          </li>
-        </ul>
+    <div id="react-app"></div>
+    {% render_bundle 'main' %}
 
-    </div>
 </div>
 
 {% endblock %}

@@ -21,7 +21,6 @@ environ.Env.read_env()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -45,6 +44,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'graphene_django',
+    'webpack_loader',
     'scout_server',
     'scout_clients'
 ]
@@ -129,9 +129,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 # graphene (graphql python)
-
 GRAPHENE = {
     'SCHEMA': 'serverproject.schema.schema'
+}
+
+#webpack loader (react)
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'assets/bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
 }
