@@ -62,25 +62,22 @@ local computer. If you haven't, do that first. You can find instructions in the
 AWS CodeStar user guide.
 
 
-1. Clone this repository
-
-        $ git clone https://github.com/charlon/scout-server
-        $ cd scout-server
-
-2. Create a Python3 virtual environment for your Django project. This virtual
+1. Create a Python3 virtual environment for your Django project. This virtual
    environment allows you to isolate this project and install any packages you
    need without affecting the system Python installation. At the terminal, type
    the following command:
 
-        $ pip3 install virtualenv (optional )
+        $ virtualenv --python=python3 scout-modern-env
+        $ . scout-modern-env/bin/activate
+        
+2. Clone this repository
 
-        $ python3 -m virtualenv . (mac os)
-        $ virtualenv --python=python3 . (linux os)
+        (scout-modern-env)$ git clone https://github.com/charlon/scout-modern
+        (scout-modern-env)$ cd scout-modern
 
 3. Activate the virtual environment and change into the working directory:
 
-        $ source bin/activate
-        (scout-server)$ cd serverproject
+        (scout-modern-env)$ cd serverproject
 
 4. Copy the env.example file into .env. This allows you set environment variables
    for running your application locally. After copying the sample, edit the
