@@ -17,11 +17,14 @@ What's Here
 This sandbox includes:
 
 * README.md - this file
-* serverproject/ - this directory contains your Django project files
-* serverproject/manage.py - this Python script is used to start your Django web application
-* serverproject/settings/env.example - sample environ .env file for local settings
-* serverproject/scout_server - this directory contains your Django application (API servers)
-* serverproject/scout_clients - this directory contains your Django application (client)
+* scoutserver/ - this directory contains your Django project files
+* scoutserver/settings/env.example - sample environ .env file for local settings
+* scout_server/ - this directory contains your Django application (API servers)
+* scout_clients/ - this directory contains your Django application (client)
+
+* manage.py - this Python script is used to start your Django web application
+* package.json - node dependencies module
+* webpack.config.js - webpack configuration file
 
 API Servers
 -----------
@@ -69,7 +72,7 @@ AWS CodeStar user guide.
 
         $ virtualenv --python=python3 scout-modern-env
         $ . scout-modern-env/bin/activate
-        
+
 2. Clone this repository
 
         (scout-modern-env)$ git clone https://github.com/charlon/scout-modern
@@ -77,21 +80,21 @@ AWS CodeStar user guide.
 
 3. Activate the virtual environment and change into the working directory:
 
-        (scout-modern-env)$ cd serverproject
+        (scout-modern-env)$ cd scout-modern
 
 4. Copy the env.example file into .env. This allows you set environment variables
    for running your application locally. After copying the sample, edit the
    necessary environment variables to suit your local development needs. You
    will also need to load the local environment files by running the source command:
 
-        (scout-server)$ cp serverproject/settings/env.example serverproject/settings/.env
+        (scout-modern-env)$ cp scoutserver/settings/env.example scoutserver/settings/.env
 
 5. Update the .env file using your preferred editor. For the purposes of this
    project, you should update the SECRET_KEY variable.
 
 6. Install Python dependencies for this project:
 
-        (scout-server)$ pip install -r requirements-local.txt
+        (scout-modern-env)$ pip install -r requirements-local.txt
 
 Adding React Demo
 -----------------
@@ -104,24 +107,24 @@ Adding React Demo
    may need to run the 'Install Certificates.command' file found in your
    'Applications/Python 3.6' directory.
 
-        (scout-server)$ cd ..
-        (scout-server)$ nodeenv -p
+        (scout-modern-env)$ nodeenv -p
 
 8. Install the node dependencies for the React Demo.
 
-        (scout-server)$ npm install
+        (scout-modern-env)$ npm install
+        (scout-modern-env)$ npm install -g webpack
 
 Starting Django Server
 ----------------------
 
 10. Apply any migrations (if needed):
 
-        (scout-server)$ python manage.py makemigrations --settings=serverproject.settings.local
-        (scout-server)$ python manage.py migrate --settings=serverproject.settings.local
+        (scout-modern-env)$ python manage.py makemigrations --settings=scoutserver.settings.local
+        (scout-modern-env)$ python manage.py migrate --settings=scoutserver.settings.local
 
 11. Start the Django server:
 
-        (scout-server)$ python manage.py runserver 0:8000 --settings=serverproject.settings.local
+        (scout-modern-env)$ python manage.py runserver 0:8000 --settings=scoutserver.settings.local
 
 Start Webpack
 -------------
@@ -130,7 +133,7 @@ Start Webpack
    and compile bundles automatically when changes are made to the source files.
    You'll need to restart this command if you make changes to the webpack config.
 
-        (scout-server)$ ./node_modules/.bin/webpack --config serverproject/webpack.config.js --watch
+        (scout-modern-env)$ webpack --config webpack.config.js --watch
 
 View your APIs
 ---------------
