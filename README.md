@@ -68,7 +68,7 @@ AWS CodeStar user guide.
 1. Create a Python3 virtual environment for your Django project. This virtual
    environment allows you to isolate this project and install any packages you
    need without affecting the system Python installation. At the terminal, type
-   the following command:
+   the following commands:
 
         $ virtualenv --python=python3 scout-modern-env
         $ . scout-modern-env/bin/activate
@@ -76,10 +76,6 @@ AWS CodeStar user guide.
 2. Clone this repository
 
         (scout-modern-env)$ git clone https://github.com/charlon/scout-modern
-        (scout-modern-env)$ cd scout-modern
-
-3. Activate the virtual environment and change into the working directory:
-
         (scout-modern-env)$ cd scout-modern
 
 4. Copy the env.example file into .env. This allows you set environment variables
@@ -100,7 +96,7 @@ Adding React Demo
 -----------------
 
 7. For the React Demo. You will need to use Node. The best way to isolate Node
-   is to create a nodeenv (similar to a virtualenv). You can activate after it
+   is to create a nodeenv (installed via requirements-local.txt). You can activate after it
    the base Python environment has been setup.
 
    Note: If you run into the [SSL: CERTIFICATE_VERIFY_FAILED] error on Mac OS, you
@@ -109,7 +105,8 @@ Adding React Demo
 
         (scout-modern-env)$ nodeenv -p
 
-8. Install the node dependencies for the React Demo.
+8. Install the node dependencies for the React Demo. Webpack will need to be
+   installed globally.
 
         (scout-modern-env)$ npm install
         (scout-modern-env)$ npm install -g webpack
