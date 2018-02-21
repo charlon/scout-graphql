@@ -12,8 +12,18 @@ def index(request):
 
 def react_list(request):
     template = loader.get_template('scout_clients/react/list.html')
+
+    # get some json data and pass as 'props' to react
+    props = {
+        'users': [
+            {'username': 'alice'},
+            {'username': 'bob'},
+        ]
+     }
+
     context = {
         'hello': "react list",
+        'props': props,
     }
     return HttpResponse(template.render(context, request))
 

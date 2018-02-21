@@ -1,11 +1,16 @@
-var World = React.createClass ({
-    render: function() {
-        return (
-            <h1>
-            Hello, World!
-            </h1>
-        )
-    }
-})
+const World = ({users}) =>
+    <div>
+        <h1>World!</h1>
+        <ul>
+        {users.map(user =>
+            <li><a href={'/user/${user.username}/'}>
+                {user.username}
+            </a></li>)}
+        </ul>
+    </div>
 
-ReactDOM.render(<World />, document.getElementById('world'))
+
+ReactDOM.render(
+    React.createElement(World, window.props),    // gets the props that are passed in the template
+    document.getElementById('world')             // a reference to the #react div that we render to
+)
