@@ -1,6 +1,7 @@
 {% extends "scout_clients/base.html" %}
 
-{% load render_bundle from webpack_loader %}
+{% load static %}
+{% load compress %}
 
 {% block title %}Demo: React{% endblock %}
 {% block content %}
@@ -10,9 +11,12 @@
 </div>
 
 <p>The following lime container will render a React component!</p>
-<div class="row marketing" id="react-app" style="border:solid 1px lime;"></div>
-{% render_bundle 'main' %}
+<div class="row marketing" id="hello" style="border:solid 1px lime;"></div>
+<div class="row marketing" id="world" style="border:solid 1px red;"></div>
 
-
+{% compress js %}
+<script src="{% static 'scout_clients/react/hello.jsx' %}" type="text/jsx" />
+<script src="{% static 'scout_clients/react/world.jsx' %}" type="text/jsx" />
+{% endcompress %}
 
 {% endblock %}

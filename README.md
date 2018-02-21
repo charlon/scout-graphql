@@ -23,8 +23,6 @@ This sandbox includes:
 * scout_clients/ - this directory contains your Django application (client)
 
 * manage.py - this Python script is used to start your Django web application
-* package.json - node dependencies module
-* webpack.config.js - webpack configuration file
 
 API Servers
 -----------
@@ -108,8 +106,9 @@ Adding React Demo
 8. Install the node dependencies for the React Demo. Webpack will need to be
    installed globally.
 
-        (scout-modern-env)$ npm install
-        (scout-modern-env)$ npm install -g webpack
+        (scout-modern-env)$ npm install -g babel
+        (scout-modern-env)$ npm install -g babel-preset-react
+        (scout-modern-env)$ npm install -g babel-cli
 
 Starting Django Server
 ----------------------
@@ -122,15 +121,6 @@ Starting Django Server
 11. Start the Django server:
 
         (scout-modern-env)$ python manage.py runserver 0:8000 --settings=scoutserver.settings.local
-
-Start Webpack
--------------
-
-9. Start the webpack "watch mode". This will leave the webpack compiler running
-   and compile bundles automatically when changes are made to the source files.
-   You'll need to restart this command if you make changes to the webpack config.
-
-        (scout-modern-env)$ webpack --config webpack.config.js --watch
 
 View your APIs
 ---------------

@@ -45,9 +45,9 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'graphene_django',
-    'webpack_loader',
     'scout_server',
-    'scout_clients'
+    'scout_clients',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -130,19 +130,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '..', "react"),
-]
+STATIC_ROOT = 'scout_clients/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
 # graphene (graphql python)
 GRAPHENE = {
     'SCHEMA': 'scoutserver.schema.schema'
 }
 
-#webpack loader (react)
-WEBPACK_LOADER = {
-    'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'bundles/',
-        'STATS_FILE': os.path.join(BASE_DIR, '..', 'webpack-stats.json'),
-    }
-}
+COMPRESS_PRECOMPILERS = (
+   ('text/jsx', 'cat {infile} | babel --presets react > {outfile}'),
+) 
