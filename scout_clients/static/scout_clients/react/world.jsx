@@ -1,3 +1,12 @@
+// mock the data to be displayed as props
+const data = {
+    'users': [
+        {'username': 'alice'},
+        {'username': 'jennifer'},
+    ]
+ }
+
+// build the template
 const World = ({users}) =>
     <div>
         <h1>World!</h1>
@@ -11,6 +20,6 @@ const World = ({users}) =>
 
 
 ReactDOM.render(
-    React.createElement(World, window.props),    // gets the props that are passed in the template
-    document.getElementById('world')             // a reference to the #react div that we render to
+    React.createElement(World, data),    // gets the props that are passed in the template
+    document.getElementById('world')     // a reference to the #react div that we render to
 )

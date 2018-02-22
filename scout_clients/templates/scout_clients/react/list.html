@@ -14,10 +14,6 @@
 <div class="row marketing" id="hello" style="border:solid 1px lime;"></div>
 <div class="row marketing" id="world" style="border:solid 1px red;"></div>
 
-<script>
-    window.props = {{ props|safe }};
-</script>
-
 {% compress js %}
 <script src="{% static 'scout_clients/react/hello.jsx' %}" type="text/jsx" />
 <script src="{% static 'scout_clients/react/world.jsx' %}" type="text/jsx" />
