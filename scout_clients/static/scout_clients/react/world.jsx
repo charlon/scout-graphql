@@ -18,6 +18,9 @@ function World(props) {
 const users = [
     {'username': 'alice'},
     {'username': 'jennifer'},
+    {'username': 'bob'},
+    {'username': 'jason'},
+    {'username': 'fred'},
  ];
 
 ReactDOM.render(
