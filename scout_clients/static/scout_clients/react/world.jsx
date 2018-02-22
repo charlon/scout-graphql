@@ -1,25 +1,26 @@
+function World(props) {
+
+    // build the template
+    const userList = props.users.map((user) =>
+        <li><a href={'/user/${user.username}/'}>{user.username}</a></li>
+    );
+    return (
+        <div>
+            <h1>World!</h1>
+            <ul>
+                {userList}
+            </ul>
+        </div>
+    );
+}
+
 // mock the data to be displayed as props
-const data = {
-    'users': [
-        {'username': 'alice'},
-        {'username': 'jennifer'},
-    ]
- }
-
-// build the template
-const World = ({users}) =>
-    <div>
-        <h1>World!</h1>
-        <ul>
-        {users.map(user =>
-            <li><a href={'/user/${user.username}/'}>
-                {user.username}
-            </a></li>)}
-        </ul>
-    </div>
-
+const users = [
+    {'username': 'alice'},
+    {'username': 'jennifer'},
+ ];
 
 ReactDOM.render(
-    React.createElement(World, data),    // gets the props that are passed in the template
+    <World users={users} />,    // gets the props that are passed in the template
     document.getElementById('world')     // a reference to the #react div that we render to
-)
+);
