@@ -1,2 +1,3 @@
+nodeenv
 django-environ
 -r requirements.txt

@@ -17,11 +17,12 @@ What's Here
 This sandbox includes:
 
 * README.md - this file
-* serverproject/ - this directory contains your Django project files
-* serverproject/manage.py - this Python script is used to start your Django web application
-* serverproject/settings/env.example - sample environ .env file for local settings
-* serverproject/scout_server - this directory contains your Django application (API servers)
-* serverproject/scout_clients - this directory contains your Django application (client)
+* scoutserver/ - this directory contains your Django project files
+* scoutserver/settings/env.example - sample environ .env file for local settings
+* scout_server/ - this directory contains your Django application (API servers)
+* scout_clients/ - this directory contains your Django application (client)
+
+* manage.py - this Python script is used to start your Django web application
 
 API Servers
 -----------
@@ -62,47 +63,63 @@ local computer. If you haven't, do that first. You can find instructions in the
 AWS CodeStar user guide.
 
 
-1. Clone this repository
-
-        $ git clone https://github.com/charlon/scout-server
-        $ cd scout-server
-
-2. Create a Python3 virtual environment for your Django project. This virtual
+1. Create a Python3 virtual environment for your Django project. This virtual
    environment allows you to isolate this project and install any packages you
    need without affecting the system Python installation. At the terminal, type
-   the following command:
+   the following commands:
 
-        $ pip3 install virtualenv (optional)
-        $ python3 -m virtualenv . (mac os)
-        $ virtualenv --python=python3 . (linux os)
+        $ virtualenv --python=python3 scout-modern-env
+        $ . scout-modern-env/bin/activate
 
-3. Activate the virtual environment and change into the working directory:
+2. Clone this repository
 
-        $ source bin/activate
-        (scout-server)$ cd serverproject
+        (scout-modern-env)$ git clone https://github.com/charlon/scout-modern
+        (scout-modern-env)$ cd scout-modern
 
 4. Copy the env.example file into .env. This allows you set environment variables
    for running your application locally. After copying the sample, edit the
    necessary environment variables to suit your local development needs. You
    will also need to load the local environment files by running the source command:
 
-        (scout-server)$ cp serverproject/settings/env.example serverproject/settings/.env
+        (scout-modern-env)$ cp scoutserver/settings/env.example scoutserver/settings/.env
 
 5. Update the .env file using your preferred editor. For the purposes of this
    project, you should update the SECRET_KEY variable.
 
 6. Install Python dependencies for this project:
 
-        (scout-server)$ pip install -r requirements-local.txt
+        (scout-modern-env)$ pip install -r requirements-local.txt
 
-7. Apply any migrations (if needed):
+Adding React Demo
+-----------------
 
-        (scout-server)$ python manage.py makemigrations --settings=serverproject.settings.local
-        (scout-server)$ python manage.py migrate --settings=serverproject.settings.local
+7. For the React Demo. You will need to use Node. The best way to isolate Node
+   is to create a nodeenv (installed via requirements-local.txt). You can activate after it
+   the base Python environment has been setup.
 
-8. Start the Django server:
+   Note: If you run into the [SSL: CERTIFICATE_VERIFY_FAILED] error on Mac OS, you
+   may need to run the 'Install Certificates.command' file found in your
+   'Applications/Python 3.6' directory.
 
-        (scout-server)$ python manage.py runserver 0:8000 --settings=serverproject.settings.local
+        (scout-modern-env)$ nodeenv -p
+
+8. Install the following node Babel libraries globally. Django Compressor will use Babel to compile the React code into
+   Javascript.
+
+        (scout-modern-env)$ npm install -g babel-cli
+        (scout-modern-env)$ npm install -g babel-preset-react
+
+Starting Django Server
+----------------------
+
+10. Apply any migrations (if needed):
+
+        (scout-modern-env)$ python manage.py makemigrations --settings=scoutserver.settings.local
+        (scout-modern-env)$ python manage.py migrate --settings=scoutserver.settings.local
+
+11. Start the Django server:
+
+        (scout-modern-env)$ python manage.py runserver 0:8000 --settings=scoutserver.settings.local
 
 View your APIs
 ---------------
