@@ -45,9 +45,10 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'graphene_django',
+    'django_filters',
+    'compressor',
     'scout_server',
     'scout_clients',
-    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -143,7 +144,7 @@ GRAPHENE = {
     'SCHEMA': 'scoutserver.schema.schema'
 }
 
-# compressor 
+# compressor
 COMPRESS_PRECOMPILERS = (
    ('text/jsx', 'cat {infile} | babel --presets react > {outfile}'),
 )

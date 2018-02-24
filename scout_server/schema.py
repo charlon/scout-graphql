@@ -1,77 +1,52 @@
 import graphene
-
+from graphene import relay, ObjectType, AbstractType
 from graphene_django.types import DjangoObjectType
+from graphene_django.filter import DjangoFilterConnectionField
+
 from scout_server.models import *
 
 
 class SpotTypeType(DjangoObjectType):
     class Meta:
         model = SpotType
+        filter_fields = [] # must have filter_fields defined.. even if empty
+        interfaces = (relay.Node, )
 
 
 class SpotType(DjangoObjectType):
     class Meta:
         model = Spot
+        #filter_fields = ['name']
+        filter_fields = {
+            'name': ['exact', 'icontains', 'istartswith'],
+        }
+        interfaces = (relay.Node, )
 
+# KNOWN ISSUES... https://github.com/graphql-python/graphene-django/issues/302
 
 class SpotAvailableHoursType(DjangoObjectType):
     class Meta:
         model = SpotAvailableHours
+        filter_fields = [] # must have filter_fields defined.. even if empty
+        interfaces = (relay.Node, )
 
 
 class SpotExtendedInfoType(DjangoObjectType):
     class Meta:
         model = SpotExtendedInfo
+        filter_fields = [] # must have filter_fields defined.. even if empty
+        interfaces = (relay.Node, )
 
 
 class Query(object):
-    all_spottypes = graphene.List(SpotTypeType)
-    all_spots = graphene.List(SpotType)
-    all_spotavailablehours = graphene.List(SpotAvailableHoursType)
-    all_spotextendedinfo = graphene.List(SpotExtendedInfoType)
+    spottype = relay.Node.Field(SpotTypeType)
+    all_spottypes = DjangoFilterConnectionField(SpotTypeType)
 
-    spot_by_id = graphene.Field(SpotType,
-                                id=graphene.Int(),)
+    spot = relay.Node.Field(SpotType)
+    all_spots = DjangoFilterConnectionField(SpotType)
 
-    spots_by_building_name = graphene.List(SpotType,
-                                           building_name=graphene.String(),)
+    spotavailablehours = relay.Node.Field(SpotAvailableHoursType)
+    all_spotavailablehours = DjangoFilterConnectionField(SpotAvailableHoursType)
 
-    spots_by_extended_info = graphene.List(SpotType,
-                                           key=graphene.String(),
-                                           value=graphene.String(),)
-
-    def resolve_all_spottypes(self, info, **kwargs):
-        return SpotType.objects.all()
-
-    def resolve_all_spots(self, info, **kwargs):
-        return Spot.objects.all()
-
-    def resolve_all_spotavailablehours(self, info, **kwargs):
-        return SpotAvailableHours.all()
-
-    def resolve_all_spotextendedinfo(self, info, **kwargs):
-        return SpotExtendedInfo.objects.all()
-
-    def resolve_spot_by_id(self, info, **kwargs):
-        id = kwargs.get('id')
-
-        if id is not None:
-            return Spot.objects.get(pk=id)
-
-    def resolve_spots_by_building_name(self, info, **kwargs):
-        building_name = kwargs.get('building_name')
-
-        if building_name is not None:
-            return Spot.objects.filter(building_name=building_name)
-
-        return None
-
-    def resolve_spots_by_extended_info(self, info, **kwargs):
-        key = kwargs.get('key')
-        value = kwargs.get('value')
-
-        if key == 'app_type' and value == 'study':
-            return Spot.objects.exclude(spotextendedinfo__key='app_type')
-        elif key is not None and value is not None:
-            return Spot.objects.filter(spotextendedinfo__key=key,
-                                       spotextendedinfo__value=value)
+    spotextendedifo = relay.Node.Field(SpotExtendedInfoType)
+    all_spotextendedinfo = DjangoFilterConnectionField(SpotExtendedInfoType)

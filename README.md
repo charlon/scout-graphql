@@ -131,11 +131,15 @@ Django REST Framework: http://localhost:8000/api/v1/spots/
 
 GraphQL: http://localhost:8000/graphql/
 
-Here is a sample GraphQL query to get you started:
+Here is a sample GraphQL query using filtering to get you started:
 
         query {
-          allSpots {
-            id
+          allSpots(name_Icontains: "study") {
+            edges {
+              node {
+                name
+              }
+            }
           }
         }
 
