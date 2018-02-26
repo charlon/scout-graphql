@@ -17,9 +17,7 @@ class SpotType(DjangoObjectType):
     class Meta:
         model = Spot
         #filter_fields = ['name']
-        filter_fields = {
-            'name': ['exact', 'icontains', 'istartswith'],
-        }
+        filter_fields = ['name', 'spotextendedinfo__key', 'spotextendedinfo__value']
         interfaces = (relay.Node, )
 
 # KNOWN ISSUES... https://github.com/graphql-python/graphene-django/issues/302
@@ -34,19 +32,17 @@ class SpotAvailableHoursType(DjangoObjectType):
 class SpotExtendedInfoType(DjangoObjectType):
     class Meta:
         model = SpotExtendedInfo
-        filter_fields = [] # must have filter_fields defined.. even if empty
+        filter_fields = {
+            'key': ['exact', 'icontains'],
+            'value': ['exact', 'icontains'],
+            'spot': ['exact'],
+        }
         interfaces = (relay.Node, )
 
 
 class Query(object):
-    spottype = relay.Node.Field(SpotTypeType)
-    all_spottypes = DjangoFilterConnectionField(SpotTypeType)
-
     spot = relay.Node.Field(SpotType)
     all_spots = DjangoFilterConnectionField(SpotType)
 
-    spotavailablehours = relay.Node.Field(SpotAvailableHoursType)
-    all_spotavailablehours = DjangoFilterConnectionField(SpotAvailableHoursType)
-
-    spotextendedifo = relay.Node.Field(SpotExtendedInfoType)
-    all_spotextendedinfo = DjangoFilterConnectionField(SpotExtendedInfoType)
+    spotextendedinfo  = relay.Node.Field(SpotExtendedInfoType)
+    all_spot_extended_info = DjangoFilterConnectionField(SpotExtendedInfoType)

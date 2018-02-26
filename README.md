@@ -143,7 +143,28 @@ Here is a sample GraphQL query using filtering to get you started:
           }
         }
 
-View your clients
+or
+
+		query {
+		  allSpots(spotextendedinfo_Key:"app_type", spotextendedinfo_Value:"food") {
+			edges {
+			  node {
+				name
+				buildingName
+				spotextendedinfo {
+				  edges {
+					node {
+					  key
+					  value
+					}
+				  }
+				}
+			  }
+			}
+		  }
+		}
+
+Viey your clients
 -----------------
 
 We'll work on this after we have data and working API servers.
