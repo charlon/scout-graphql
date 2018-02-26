@@ -131,6 +131,9 @@ Django REST Framework: http://localhost:8000/api/v1/spots/
 
 GraphQL: http://localhost:8000/graphql/
 
+Note this unresolved issue:
+https://github.com/graphql-python/graphene-django/issues/400
+
 Here is a sample GraphQL query using filtering to get you started:
 
         query {
