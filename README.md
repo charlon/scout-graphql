@@ -117,6 +117,10 @@ Starting Django Server
         (scout-modern-env)$ python manage.py makemigrations --settings=scoutserver.settings.local
         (scout-modern-env)$ python manage.py migrate --settings=scoutserver.settings.local
 
+11. Build the GraphQL Introspection schema.json
+
+        (scout-modern-env)$ python manage.py graphql_schema --schema scoutserver.schema.schema --out schema.json --settings=scoutserver.settings.local
+
 11. Start the Django server:
 
         (scout-modern-env)$ python manage.py runserver 0:8000 --settings=scoutserver.settings.local
@@ -167,7 +171,7 @@ or
 		  }
 		}
 
-Viey your clients
+View your clients
 -----------------
 
 We'll work on this after we have data and working API servers.
