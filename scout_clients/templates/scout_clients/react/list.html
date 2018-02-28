@@ -10,9 +10,11 @@
 </div>
 
 <p>The following lime container will render a React component!</p>
-<div class="row marketing" id="react-app" style="border:solid 1px lime;"></div>
-{% render_bundle 'main' %}
 
+<div class="row marketing" id="hello" style="border:solid 1px lime;"></div>
+{% render_bundle 'hello' %}
 
+<div class="row marketing" id="world" style="border:solid 1px red;"></div>
+{% render_bundle 'world' %}
 
 {% endblock %}
