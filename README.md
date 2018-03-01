@@ -105,11 +105,9 @@ Adding React Demo
 
         (scout-modern-env)$ nodeenv -p
 
-8. Install the node dependencies for the React Demo. Webpack will need to be
-   installed globally.
+8. Install the node dependencies for the React Demo.
 
         (scout-modern-env)$ npm install
-        (scout-modern-env)$ npm install -g webpack
 
 Starting Django Server
 ----------------------
@@ -130,7 +128,7 @@ Start Webpack
    and compile bundles automatically when changes are made to the source files.
    You'll need to restart this command if you make changes to the webpack config.
 
-        (scout-modern-env)$ webpack --config webpack.config.js --watch
+        (scout-modern-env)$ ./node_modules/.bin/webpack --config webpack.config.js
 
 View your APIs
 ---------------
