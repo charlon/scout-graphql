@@ -128,7 +128,7 @@ Start Webpack
    and compile bundles automatically when changes are made to the source files.
    You'll need to restart this command if you make changes to the webpack config.
 
-        (scout-modern-env)$ ./node_modules/.bin/webpack --config webpack.config.js
+        (scout-modern-env)$ ./node_modules/.bin/webpack --config webpack.config.js --watch
 
 View your APIs
 ---------------
