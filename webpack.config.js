@@ -10,8 +10,8 @@ module.exports = {
   //entry: './react/js/app', // entry point of our app. assets/js/index.js should require other js modules and dependencies it needs
 
   entry : {
-    hello: './react/js/hello',
-    world: './react/js/world'
+    hello: './scout_clients/static/scout_clients/react/hello',
+    world: './scout_clients/static/scout_clients/react/world'
   },
 
   optimization: {
@@ -35,7 +35,7 @@ module.exports = {
 	},
 
   output: {
-      path: path.resolve('./react/bundles/'),
+      path: path.resolve('./scout_clients/static/scout_clients/react/bundles/'),
       filename: "[name]-[hash].js",
   },
 

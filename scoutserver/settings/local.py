@@ -131,7 +131,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '..', "react"),
+    #os.path.join(BASE_DIR, '..', "react"),
 ]
 
 # graphene (graphql python)
@@ -142,7 +142,7 @@ GRAPHENE = {
 #webpack loader (react)
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'bundles/',
+        'BUNDLE_DIR_NAME': 'scout_clients/react/bundles/',
         'STATS_FILE': os.path.join(BASE_DIR, '..', 'webpack-stats.json'),
     }
 }
