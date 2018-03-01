@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 
 function World(props) {
   // build the template
-  const userList = props.users.map((user) =>
-    <li><a href={'/user/${user.username}/'}>{user.username}</a></li>
+  const userList = props.users.map((user, i) =>
+    <li key={i}><a href={'/user/${user.username}/'}>{user.username}</a></li>
   );
   return (
     <div>
