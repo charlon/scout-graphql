@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'graphene_django',
     'webpack_loader',
     'scout_server',
-    'scout_clients'
+    'scout_clients',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -130,6 +131,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = 'scout_clients/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
 STATICFILES_DIRS = [
     #os.path.join(BASE_DIR, '..', "react"),
 ]
@@ -146,3 +155,16 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, '..', 'webpack-stats.json'),
     }
 }
+
+# compressor
+# COMPRESS_ROOT = "/tmp/some/path/for/files"
+COMPRESS_PRECOMPILERS = ()
+COMPRESS_ENABLED = True # True if you want to compress your development build
+COMPRESS_OFFLINE = False # True if you want to compress your build offline
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter'
+]
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter',
+]

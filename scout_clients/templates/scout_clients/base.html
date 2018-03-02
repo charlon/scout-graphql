@@ -4,6 +4,7 @@
   <head>
     <title>{% block title %}{% endblock %}</title>
 
+    {% load compress %}
     {% load staticfiles %}
     {% load render_bundle from webpack_loader %}
 
@@ -17,12 +18,16 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.3/turbolinks.js"></script>
 
-    <!-- bundled react vendors from node_modules -->
+    <!-- bundled react vendors from node_modules using webpack -->
     {% render_bundle 'vendor' %}
 
-    <!-- app css and js -->
-    <link rel="stylesheet" href="{% static "scout_clients/css/main.css" %}" type="text/css">
+    <!-- compressed css and js using django-compressor -->
+    {% compress js %}
     <script type="text/javascript" src="{% static "scout_clients/js/main.js" %}"></script>
+    {% endcompress %}
+    {% compress css %}
+    <link rel="stylesheet" href="{% static "scout_clients/css/main.css" %}" type="text/css">
+    {% endcompress %}
 
   </head>
   <body>
@@ -40,7 +45,7 @@
       {% block content %}{% endblock %}
 
       <footer class="footer">
-        <p>© 2018 Your Name Here</p>
+        <p>© {% now "Y" %} Your Name Here</p>
       </footer>
     </div> <!-- /container -->
   </body>
