@@ -103,11 +103,18 @@ Adding React Demo
 
         (scout-modern-env)$ nodeenv -p
 
-8. Install the following node Babel libraries globally. Django Compressor will use Babel to compile the React code into
-   Javascript.
+8. Install the node dependencies for the React Demo.
 
-        (scout-modern-env)$ npm install -g babel-cli
-        (scout-modern-env)$ npm install -g babel-preset-react
+        (scout-modern-env)$ npm install
+
+Start Webpack
+-------------
+
+9. Start the webpack "watch mode". This will leave the webpack compiler running
+   and compile bundles automatically when changes are made to the source files.
+   You'll need to restart this command if you make changes to the webpack config.
+
+        (scout-modern-env)$ ./node_modules/.bin/webpack --config webpack.config.js --watch
 
 Starting Django Server
 ----------------------
