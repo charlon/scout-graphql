@@ -118,3 +118,4 @@ node_modules/
 
 # react + webpack
 bundles/
+webpack-stats.json
