@@ -42,11 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
     'rest_framework',
     'graphene_django',
     'django_filters',
     'compressor',
+    'webpack_loader',
     'scout_server',
     'scout_clients',
 ]
@@ -139,12 +139,32 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
+STATICFILES_DIRS = [
+    #os.path.join(BASE_DIR, '..', "react"),
+]
+
 # graphene (graphql python)
 GRAPHENE = {
     'SCHEMA': 'scoutserver.schema.schema'
 }
 
+#webpack loader (react)
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'scout_clients/react/bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, '..', 'webpack-stats.json'),
+    }
+}
+
 # compressor
-COMPRESS_PRECOMPILERS = (
-   ('text/jsx', 'cat {infile} | babel --presets react > {outfile}'),
-)
+# COMPRESS_ROOT = "/tmp/some/path/for/files"
+COMPRESS_PRECOMPILERS = ()
+COMPRESS_ENABLED = True # True if you want to compress your development build
+COMPRESS_OFFLINE = False # True if you want to compress your build offline
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter'
+]
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter',
+]
