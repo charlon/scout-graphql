@@ -1,11 +1,15 @@
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import styles from './world.css'
+
 function World(props) {
   // build the template
-  const userList = props.users.map((user) =>
-    <li><a href={'/user/${user.username}/'}>{user.username}</a></li>
+  const userList = props.users.map((user, i) =>
+    <li key={i}><a href={'/user/${user.username}/'}>{user.username}</a></li>
   );
   return (
     <div>
-      <h1>World!</h1>
+      <h1 className='world-header'>World!</h1>
       <ul>
         {userList}
       </ul>
