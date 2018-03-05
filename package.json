@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "relay": "relay-compiler --src ./src --schema ./schema.json"
   },
   "author": "",
   "license": "ISC",
@@ -22,5 +23,11 @@
     "webpack": "^4.0.1",
     "webpack-bundle-tracker": "^0.2.1",
     "webpack-cli": "^2.0.9"
+  },
+  "dependencies": {
+    "babel-plugin-relay": "^1.5.0",
+    "graphql": "^0.13.1",
+    "react-relay": "^1.5.0",
+    "relay-compiler": "^1.5.0"
   }
 }

@@ -11,7 +11,8 @@ module.exports = {
 
   entry : {
     hello: './scout_clients/static/scout_clients/react/hello',
-    world: './scout_clients/static/scout_clients/react/world'
+    world: './scout_clients/static/scout_clients/react/world',
+    relay: './scout_clients/static/scout_clients/react/relay'
   },
 
   optimization: {
@@ -50,7 +51,7 @@ module.exports = {
                 exclude:/(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015', 'react']
+                    presets: ['es2015', 'react'],
                 }
             },
             {
