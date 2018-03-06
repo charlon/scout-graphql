@@ -14,7 +14,7 @@ const client = new ApolloClient({
 });
 
 // here we create a query opearation
-const allSpotsQuery = gql`
+const ALL_SPOTS_QUERY = gql`
   query {
     allSpots {
       id
@@ -50,7 +50,7 @@ const SpotsList = ({ data: {loading, error, allSpots }}) => {
 
  };
 
-const SpotsListWithData = graphql(allSpotsQuery)(SpotsList);
+const SpotsListWithData = graphql(ALL_SPOTS_QUERY)(SpotsList);
 
 ReactDOM.render(
   <ApolloProvider client={client}>
