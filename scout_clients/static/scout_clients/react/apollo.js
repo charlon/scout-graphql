@@ -6,9 +6,10 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import styles from './apollo.css'
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'http://localhost:8000/graphql' }),
+  link: new HttpLink({ uri: 'http://localhost:8000/graphql/' }),
   cache: new InMemoryCache()
 });
 
@@ -22,16 +23,25 @@ const allSpotsQuery = gql`
   }
 `;
 
-const SpotsList = ({ data: {loading, error, name }}) => {
+const SpotsList = ({ data: {loading, error, allSpots }}) => {
    if (loading) {
      return <p>Loading ...</p>;
    }
    if (error) {
      return <p>{error.message}</p>;
    }
-   return <ul>
-     { name.map( ch => <li key={ch.id}>{ch.name}</li> ) }
-   </ul>;
+   const spotsList = allSpots.map( spot =>
+     <li key={spot.id}>{spot.name}</li>
+   );
+   return (
+     <div>
+       <h1 className='apollo-header'>Spots</h1>
+       <ul>
+         {spotsList}
+       </ul>
+     </div>
+   );
+
  };
 
 const SpotsListWithData = graphql(allSpotsQuery)(SpotsList);
