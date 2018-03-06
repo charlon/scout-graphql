@@ -11,7 +11,8 @@ module.exports = {
 
   entry : {
     hello: './scout_clients/static/scout_clients/react/hello',
-    world: './scout_clients/static/scout_clients/react/world'
+    world: './scout_clients/static/scout_clients/react/world',
+    apollo: './scout_clients/static/scout_clients/react/apollo'
   },
 
   optimization: {
