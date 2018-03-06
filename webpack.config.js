@@ -48,10 +48,10 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?$/,
-                exclude:/(node_modules|bower_components)/,
+                exclude:/(node_modules)/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015', 'react'],
+                    presets: ['react'],
                 }
             },
             {
