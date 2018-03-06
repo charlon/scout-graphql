@@ -19,6 +19,9 @@ const allSpotsQuery = gql`
     allSpots {
       id
       name
+      buildingName
+      latitude
+      longitude
     }
   }
 `;
@@ -31,12 +34,15 @@ const SpotsList = ({ data: {loading, error, allSpots }}) => {
      return <p>{error.message}</p>;
    }
    const spotsList = allSpots.map( spot =>
-     <li key={spot.id}>{spot.name}</li>
+     <li key={spot.id}>{spot.name}<br/>
+       {spot.buildingName}<br/>
+       {spot.latitude}, {spot.longitude}
+     </li>
    );
    return (
      <div>
        <h1 className='apollo-header'>Spots</h1>
-       <ul>
+       <ul className='apollo-list'>
          {spotsList}
        </ul>
      </div>
