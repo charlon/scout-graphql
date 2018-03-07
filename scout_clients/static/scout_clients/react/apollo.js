@@ -36,7 +36,7 @@ const SpotsList = ({ data: {loading, error, allSpots }}) => {
    const spotsList = allSpots.map( spot =>
      <li key={spot.id} className="media">
        <div className="media-left">
-         <a href="#"><img class="media-object" src="http://via.placeholder.com/60x60" alt="..." /></a>
+         <a href="#"><img className="media-object" src="http://via.placeholder.com/60x60" alt="..." /></a>
        </div>
        <div className="media-body">
          <h4 className="media-heading">{spot.name}</h4>
@@ -49,7 +49,7 @@ const SpotsList = ({ data: {loading, error, allSpots }}) => {
      <div>
        <h2 className='apollo-header'>Apollo Client</h2>
        <div className = "col-lg-12">
-         <ul class="media-list apollo-list">
+         <ul className="media-list apollo-list">
            {spotsList}
          </ul>
        </div>
