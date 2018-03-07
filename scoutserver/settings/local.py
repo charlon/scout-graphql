@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'corsheaders',
+    'requests',
     'rest_framework',
     'graphene_django',
     'webpack_loader',
