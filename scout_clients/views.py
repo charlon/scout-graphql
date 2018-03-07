@@ -16,3 +16,11 @@ def react_demo(request):
         'hello': "react demo",
     }
     return HttpResponse(template.render(context, request))
+
+
+def classic_demo(request):
+    template = loader.get_template('scout_clients/classic/demo.html')
+    context = {
+        'hello': "classic demo",
+    }
+    return HttpResponse(template.render(context, request))
