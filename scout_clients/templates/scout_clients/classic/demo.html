@@ -16,6 +16,12 @@
   <h2>Template</h2>
   {{ graphql }}
 
+  <ul>
+  {% for spot in spots %}
+      <li>{{ spot.name }} - {{ spot.buildingName }}</li>
+  {% endfor %}
+  </ul>
+
   <div class="col-lg-6" style="margin-top:2em;">
       <ul class="media-list">
         <li class="media">

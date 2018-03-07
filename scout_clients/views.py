@@ -29,7 +29,8 @@ def classic_demo(request):
     r = requests.post(url=url, json=graphql_query)
 
     context = {
-        'hello': "classic demo",
-        'graphql': r.json(),
+        'hello' : "classic demo",
+        'graphql' : r.json(),
+        'spots' : r.json()
     }
     return HttpResponse(template.render(context, request))
