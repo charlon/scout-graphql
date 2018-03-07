@@ -7,11 +7,9 @@ module.exports = {
   mode: "development",
   context: __dirname,
 
-  //entry: './react/js/app', // entry point of our app. assets/js/index.js should require other js modules and dependencies it needs
-
   entry : {
-    hello: './scout_clients/static/scout_clients/react/hello',
-    world: './scout_clients/static/scout_clients/react/world',
+    //hello: './scout_clients/static/scout_clients/react/hello',
+    //world: './scout_clients/static/scout_clients/react/world',
     apollo: './scout_clients/static/scout_clients/react/apollo'
   },
 
