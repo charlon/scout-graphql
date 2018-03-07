@@ -34,20 +34,27 @@ const SpotsList = ({ data: {loading, error, allSpots }}) => {
      return <p>{error.message}</p>;
    }
    const spotsList = allSpots.map( spot =>
-     <li key={spot.id}>{spot.name}<br/>
-       {spot.buildingName}<br/>
-       {spot.latitude}, {spot.longitude}
+     <li key={spot.id} className="media">
+       <div className="media-left">
+         <a href="#"><img class="media-object" src="http://via.placeholder.com/60x60" alt="..." /></a>
+       </div>
+       <div className="media-body">
+         <h4 className="media-heading">{spot.name}</h4>
+         <p>{spot.buildingName}<br/>
+         {spot.latitude}, {spot.longitude}</p>
+       </div>
      </li>
    );
    return (
      <div>
-       <h1 className='apollo-header'>Spots</h1>
-       <ul className='apollo-list'>
-         {spotsList}
-       </ul>
+       <h2 className='apollo-header'>Apollo Client</h2>
+       <div className = "col-lg-12">
+         <ul class="media-list apollo-list">
+           {spotsList}
+         </ul>
+       </div>
      </div>
    );
-
  };
 
 const SpotsListWithData = graphql(ALL_SPOTS_QUERY)(SpotsList);
