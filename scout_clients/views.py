@@ -25,12 +25,11 @@ def classic_demo(request):
 
     url = 'http://localhost:8000/graphql'
     graphql_query = { 'query' : '{ allSpots { id name buildingName latitude longitude } }' }
-
     r = requests.post(url=url, json=graphql_query)
+    data = json.loads(r.text)
 
     context = {
         'hello' : "classic demo",
-        'graphql' : r.json(),
-        'spots' : r.json()
+        'spots' : data['data']['allSpots'],
     }
     return HttpResponse(template.render(context, request))
