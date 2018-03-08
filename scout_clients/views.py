@@ -23,13 +23,19 @@ def react_demo(request):
 def classic_demo(request):
     template = loader.get_template('scout_clients/classic/demo.html')
 
+    # query the graphql endpoint using requests library
     url = 'http://localhost:8000/graphql'
-    graphql_query = { 'query' : '{ allSpots { id name buildingName latitude longitude } }' }
-    r = requests.post(url=url, json=graphql_query)
-    data = json.loads(r.text)
+    query = { 'query' : '{ allSpots { id name buildingName latitude longitude } }' }
+    response = requests.post(url=url, json=query)
 
+    # turn the json response text into a python dict
+    data = json.loads(response.text)
+    # get the spot data
+    spots = data['data']['allSpots']
+
+    # pass the data to template using context object
     context = {
         'hello' : "classic demo",
-        'spots' : data['data']['allSpots'],
+        'spots' : spots,
     }
     return HttpResponse(template.render(context, request))
