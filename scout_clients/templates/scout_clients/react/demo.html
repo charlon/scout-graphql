@@ -3,8 +3,15 @@
 {% load static %}
 {% load render_bundle from webpack_loader %}
 
-
 {% block title %}Demo: React{% endblock %}
+
+{% block react_head %}
+<!-- bundled react vendors from node_modules using webpack -->
+{% render_bundle 'vendor' %}
+<!-- opt-out of turbolinks caching to make react components work better -->
+<meta name="turbolinks-cache-control" content="no-cache">
+{% endblock %}
+
 {% block content %}
 
 <div class="jumbotron">

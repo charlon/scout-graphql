@@ -16,8 +16,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.3/turbolinks.js"></script>
 
-    <!-- bundled react vendors from node_modules using webpack -->
-    {% render_bundle 'vendor' %}
+    {% block react_head %}{% endblock %}
 
     <!-- compressed css and js using django-compressor -->
     {% compress js %}
