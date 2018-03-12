@@ -62,13 +62,8 @@ class Query(object):
     def resolve_photo(self, info, **kwargs):
         url = "https://jsonplaceholder.typicode.com/photos/1"
         response = requests.get(url=url)
-        data = json.loads(response.text)
-        the_photo = PhotoType()
-        the_photo.albumId = data['albumId']
-        the_photo.photo_id= data['id']
-        the_photo.title = data['title']
-        the_photo.url = data['url']
-        the_photo.thumbnailUrl = data['thumbnailUrl']
+        data = response.text
+        the_photo = json2obj(data)
         the_list = []
         the_list.append(the_photo)
         return the_list
