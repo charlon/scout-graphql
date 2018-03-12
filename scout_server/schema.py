@@ -1,9 +1,16 @@
 import graphene
 import json
 import requests
+from collections import namedtuple
 
 from graphene_django.types import DjangoObjectType, ObjectType
 from scout_server.models import *
+
+
+def _json_object_hook(d): return namedtuple('X', d.keys())(*d.values())
+
+
+def json2obj(data): return json.loads(data, object_hook=_json_object_hook)
 
 
 class SpotTypeType(DjangoObjectType):
@@ -28,7 +35,7 @@ class SpotExtendedInfoType(DjangoObjectType):
 
 class PhotoType(ObjectType):
     albumId = graphene.ID()
-    id = graphene.ID()
+    photo_id = graphene.ID()
     title = graphene.String()
     url = graphene.String()
     thumbnailUrl = graphene.String()
@@ -55,8 +62,16 @@ class Query(object):
     def resolve_photo(self, info, **kwargs):
         url = "https://jsonplaceholder.typicode.com/photos/1"
         response = requests.get(url=url)
-        photoObj = json.loads(response.text)
-        return photoObj
+        data = json.loads(response.text)
+        the_photo = PhotoType()
+        the_photo.albumId = data['albumId']
+        the_photo.photo_id= data['id']
+        the_photo.title = data['title']
+        the_photo.url = data['url']
+        the_photo.thumbnailUrl = data['thumbnailUrl']
+        the_list = []
+        the_list.append(the_photo)
+        return the_list
 
     def resolve_all_spottypes(self, info, **kwargs):
         return SpotType.objects.all()
