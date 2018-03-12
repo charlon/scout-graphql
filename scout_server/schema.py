@@ -57,16 +57,14 @@ class Query(object):
                                            key=graphene.String(),
                                            value=graphene.String(),)
 
-    photo = graphene.List(PhotoType)
+    photo = graphene.Field(PhotoType)
 
     def resolve_photo(self, info, **kwargs):
         url = "https://jsonplaceholder.typicode.com/photos/1"
         response = requests.get(url=url)
         data = response.text
         the_photo = json2obj(data)
-        the_list = []
-        the_list.append(the_photo)
-        return the_list
+        return the_photo
 
     def resolve_all_spottypes(self, info, **kwargs):
         return SpotType.objects.all()
