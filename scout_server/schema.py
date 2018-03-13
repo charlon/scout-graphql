@@ -35,7 +35,7 @@ class SpotExtendedInfoType(DjangoObjectType):
 
 class PhotoType(ObjectType):
     albumId = graphene.ID()
-    photo_id = graphene.ID()
+    id = graphene.ID()
     title = graphene.String()
     url = graphene.String()
     thumbnailUrl = graphene.String()
@@ -57,10 +57,11 @@ class Query(object):
                                            key=graphene.String(),
                                            value=graphene.String(),)
 
-    photo = graphene.Field(PhotoType)
+    photo_by_id = graphene.Field(PhotoType, id=graphene.Int(),)
 
-    def resolve_photo(self, info, **kwargs):
-        url = "https://jsonplaceholder.typicode.com/photos/1"
+    def resolve_photo_by_id(self, info, **kwargs):
+        id = kwargs.get('id')
+        url = f"https://jsonplaceholder.typicode.com/photos/{id}"
         response = requests.get(url=url)
         data = response.text
         the_photo = json2obj(data)

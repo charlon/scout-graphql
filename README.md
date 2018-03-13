@@ -143,6 +143,23 @@ Here is a sample GraphQL query to get you started:
         query {
           allSpots {
             id
+            name
+          }
+        }
+
+        query {
+           spotById (id: 5) {
+             id
+            	name
+           }
+        }
+
+        query {
+           photo(id: 2343) {
+            id
+            albumId
+            url
+            thumbnailUrl
           }
         }
 
