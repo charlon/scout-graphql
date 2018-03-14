@@ -32,7 +32,6 @@ class SpotExtendedInfoType(DjangoObjectType):
     class Meta:
         model = SpotExtendedInfo
 
-
 class PhotoType(ObjectType):
     albumId = graphene.ID()
     id = graphene.ID()
@@ -46,6 +45,7 @@ class Query(object):
     all_spots = graphene.List(SpotType)
     all_spotavailablehours = graphene.List(SpotAvailableHoursType)
     all_spotextendedinfo = graphene.List(SpotExtendedInfoType)
+    all_photos = graphene.List(PhotoType)
 
     spot_by_id = graphene.Field(SpotType,
                                 id=graphene.Int(),)
@@ -66,6 +66,13 @@ class Query(object):
         data = response.text
         the_photo = json2obj(data)
         return the_photo
+
+    def resolve_all_photos(self, info, **kwargs):
+        url = "https://jsonplaceholder.typicode.com/photos/"
+        response = requests.get(url=url)
+        data = response.text
+        the_photos = json2obj(data)
+        return the_photos
 
     def resolve_all_spottypes(self, info, **kwargs):
         return SpotType.objects.all()
