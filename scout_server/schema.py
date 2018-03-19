@@ -9,7 +9,13 @@ class SpotObjectType(DjangoObjectType):
         model = Spot
 
 class Query(object):
-    spots = graphene.List(SpotObjectType)
+    spots = graphene.List(SpotObjectType, spot_id=graphene.Int(),)
 
     def resolve_spots(self, info, **kwargs):
-        return Spot.objects.all()
+        spot_id = kwargs.get('spot_id')
+        if spot_id is not None:
+            spots = Spot.objects.filter(pk=spot_id)
+            return spots
+        else:
+            spots = Spot.objects.all()
+            return spots
