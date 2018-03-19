@@ -26,13 +26,19 @@ class SpotObjectType(DjangoObjectType):
 
 
 class PhotoQuery(object):
-    photos = graphene.List(PhotoObjectType,)
+    photos = graphene.List(PhotoObjectType, album_id=graphene.Int())
 
     def resolve_photos(self, info, **kwargs):
-        url = "https://jsonplaceholder.typicode.com/photos"
+        album_id = kwargs.get('album_id')
+        if album_id is not None:
+            url = "https://jsonplaceholder.typicode.com/photos/?albumId={}".format(album_id)
+        else:
+            url = "https://jsonplaceholder.typicode.com/photos"
+
         response = requests.get(url=url)
         data = response.text
         photos = json2obj(data)
+
         return photos
 
 
@@ -43,10 +49,10 @@ class SpotQuery(object):
         spot_id = kwargs.get('spot_id')
         if spot_id is not None:
             spots = Spot.objects.filter(pk=spot_id)
-            return spots
         else:
             spots = Spot.objects.all()
-            return spots
+
+        return spots
 
 
 class Query(PhotoQuery, SpotQuery):
