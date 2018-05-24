@@ -1,0 +1,57 @@
+{% extends "scout_clients/base.html" %}
+
+{% load static %}
+
+{% block title %}Demo: Vue Django{% endblock %}
+{% block content %}
+
+<div class="jumbotron">
+  <h1>{{hello}}</h1>
+  <p class="lead">Let's experiment with exposing data through 2 popular API server architectures. Then we'll consume the data using client apps built with various techniques.</p>
+</div>
+
+<p>The following container will render a django template with context passed from the view!</p>
+
+<div class="row marketing" style="border:solid 1px red;">
+
+  <h2 class="classic-header">Vue.js</h2>
+
+  <div class = "col-lg-12">
+      <ul class="media-list classic-list">
+
+        <li class="media">
+          <div class="media-left">
+
+              <a href="#"><img class="media-object" src=" " alt="..."></a>
+
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">spot name</h4>
+            <p>building<br/>
+            lat, long</p>
+          </div>
+
+    </ul>
+  </div>
+
+</div>
+<div id="app">
+    <p> [[ title ]] </p>
+    <ul>
+        <li v-for="day in days">
+            <h4> Day [[ day ]]</h4>
+        </li>
+    </ul>
+</div>
+<script>
+new Vue({
+  delimiters: ['[[', ']]'],
+  el: '#app',
+  data: {
+    title: 'Welcome to My Journal',
+    days: [1,2,3]
+  }
+})
+</script>
+
+{% endblock %}

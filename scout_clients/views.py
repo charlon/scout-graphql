@@ -20,6 +20,14 @@ def react_demo(request):
     return HttpResponse(template.render(context, request))
 
 
+def vue_demo(request):
+    template = loader.get_template('scout_clients/vue/demo.html')
+    context = {
+        'hello': "vue demo",
+    }
+    return HttpResponse(template.render(context, request))
+
+
 def classic_demo(request):
     template = loader.get_template('scout_clients/classic/demo.html')
 

@@ -6,4 +6,5 @@ urlpatterns = [
     re_path(r'^$', views.index, name='index'),
     path('react/demo/', views.react_demo, name='react_demo'),
     path('classic/demo/', views.classic_demo, name='classic_demo'),
+    path('vue/demo/', views.vue_demo, name='vue_demo'),
 ]
