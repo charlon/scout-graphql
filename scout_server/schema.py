@@ -61,7 +61,7 @@ class Query(object):
 
     def resolve_photo_by_id(self, info, **kwargs):
         id = kwargs.get('id')
-        url = f"https://jsonplaceholder.typicode.com/photos/{id}"
+        url = "https://jsonplaceholder.typicode.com/photos/{}".format(id)
         response = requests.get(url=url)
         data = response.text
         the_photo = json2obj(data)
