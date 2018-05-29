@@ -51,11 +51,9 @@
 
 <script type="text/javascript" src="{% static "scout_clients/vuejs/button-counter-literal.js" %}"></script>
 <script type="text/javascript" src="{% static "scout_clients/vuejs/button-counter-inline.js" %}"></script>
-{% render_bundle 'vue' %}
+
 
 <script>
-
-import Demo from "./components/Demo.vue";
 
 new Vue({
   delimiters: ['[[', ']]'],
@@ -63,7 +61,6 @@ new Vue({
   components: {
     'button-counter-literal': ButtonCounterLiteral,
     'button-counter-inline': ButtonCounterInline,
-    Demo,
   },
   data: {
     title: 'All Spots',
