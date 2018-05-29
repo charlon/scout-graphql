@@ -1,6 +1,7 @@
 {% extends "scout_clients/base.html" %}
 
 {% load static %}
+{% load render_bundle from webpack_loader %}
 
 {% block title %}Demo: Vue Django{% endblock %}
 {% block content %}
@@ -26,6 +27,8 @@
             </div>
         </button-counter-inline>
 
+        <button-counter-vue></button-counter-vue>
+
         <h2>[[ title ]]</h2>
         <div v-if="loading">
           Loading.....
@@ -48,14 +51,19 @@
 
 <script type="text/javascript" src="{% static "scout_clients/vuejs/button-counter-literal.js" %}"></script>
 <script type="text/javascript" src="{% static "scout_clients/vuejs/button-counter-inline.js" %}"></script>
+{% render_bundle 'vue' %}
 
 <script>
+
+import Demo from "./components/Demo.vue";
+
 new Vue({
   delimiters: ['[[', ']]'],
   el: '#app',
   components: {
     'button-counter-literal': ButtonCounterLiteral,
     'button-counter-inline': ButtonCounterInline,
+    Demo,
   },
   data: {
     title: 'All Spots',
