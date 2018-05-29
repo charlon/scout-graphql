@@ -41,13 +41,13 @@
 
 
 </div>
-<script type="text/javascript" src="{% static "scout_clients/vuejs/component.js" %}"></script>
+<script type="text/javascript" src="{% static "scout_clients/vuejs/button-counter.js" %}"></script>
 <script>
 new Vue({
   delimiters: ['[[', ']]'],
   el: '#app',
   components: {
-    'button-counter': ComponentA,
+    'button-counter': ButtonCounter,
 },
   data: {
     title: 'Welcome to My Journal',
