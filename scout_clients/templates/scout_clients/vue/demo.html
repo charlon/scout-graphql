@@ -26,6 +26,10 @@
             </div>
         </button-counter-inline>
 
+        <h2>[[ title ]]</h2>
+        <div v-if="loading">
+          Loading.....
+        </div>
         <ul class="media-list classic-list">
             <li v-for="space in spaces" class="media">
                <div class="media-left">
@@ -52,17 +56,24 @@ new Vue({
   components: {
     'button-counter-literal': ButtonCounterLiteral,
     'button-counter-inline': ButtonCounterInline,
-},
+  },
   data: {
-    title: 'Welcome to My Journal',
-    days: [1,2,3],
+    title: 'All Spots',
+    loading: true,
     spaces: null
   },
   mounted () {
+    this.loading = true;
     axios
       .get('/api/v1/spots/?format=json')
-      //.then(response => (console.log(response)))
-      .then(response => (this.spaces = response.data))
+      .then(response => {
+          this.spaces = response.data
+      })
+      .catch(error => {
+        console.log(error)
+        this.errored = true
+      })
+      .finally(() => this.loading = false)
   }
 })
 </script>
