@@ -23,9 +23,9 @@
         <button-counter-literal></button-counter-literal>
 
         <button-counter-inline inline-template>
-            <div style="margin-bottom:25px;">
-                <button v-on:click="count++">You clicked me [[ count ]] times. (inline component)</button>
-            </div>
+          <div style="margin-bottom:25px;">
+              <button v-on:click="count++">You clicked me [[ count ]] times [[ blah ]]. (inline component)</button>
+          </div>
         </button-counter-inline>
 
         <h2>[[ title ]]</h2>
@@ -58,12 +58,13 @@
 Vue.component('button-counter-literal', {
   template: `
       <div style="margin-bottom:25px;">
-          <button v-on:click="count++">You clicked me {{ count }} times. (string literal component)</button>
+          <button v-on:click="count++">You clicked me {% verbatim %}{{ count }} {{ blah }}{% endverbatim %} times. (string literal component)</button>
       </div>
   `,
   data: function () {
     return {
-      count: 0
+      count: 0,
+      blah: 'balskdfjalkjsda'
     }
   }
 })
@@ -71,7 +72,8 @@ Vue.component('button-counter-literal', {
 Vue.component('button-counter-inline', {
   data: function () {
     return {
-      count: 0
+      count: 0,
+      blah: 'balskdfjalkjsda'
     }
   }
 })
