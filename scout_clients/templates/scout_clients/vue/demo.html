@@ -4,6 +4,7 @@
 {% load render_bundle from webpack_loader %}
 
 {% block title %}Demo: Vue Django{% endblock %}
+
 {% block content %}
 
 <div class="jumbotron">
@@ -26,7 +27,7 @@
                 <button v-on:click="count++">You clicked me [[ count ]] times. (inline component)</button>
             </div>
         </button-counter-inline>
-        
+
         <h2>[[ title ]]</h2>
         <div v-if="loading">
           Loading.....
@@ -34,7 +35,7 @@
         <ul class="media-list classic-list">
             <li v-for="space in spaces" class="media">
                <div class="media-left">
-                  <a href="#"><img class="media-object" src=" " alt="..."></a>
+                  <a href="#"><img className="media-object" src="http://via.placeholder.com/60x60" alt="..." /></a>
               </div>
               <div class="media-body">
                 <h4 class="media-heading">[[ space.name ]]</h4>
@@ -47,19 +48,41 @@
 
 </div>
 
+<!--
 <script type="text/javascript" src="{% static "scout_clients/vuejs/button-counter-literal.js" %}"></script>
 <script type="text/javascript" src="{% static "scout_clients/vuejs/button-counter-inline.js" %}"></script>
-
+-->
 
 <script>
+
+Vue.component('button-counter-literal', {
+  template: `
+      <div style="margin-bottom:25px;">
+          <button v-on:click="count++">You clicked me {{ count }} times. (string literal component)</button>
+      </div>
+  `,
+  data: function () {
+    return {
+      count: 0
+    }
+  }
+})
+
+Vue.component('button-counter-inline', {
+  data: function () {
+    return {
+      count: 0
+    }
+  }
+})
 
 new Vue({
   delimiters: ['[[', ']]'],
   el: '#app',
-  components: {
-    'button-counter-literal': ButtonCounterLiteral,
-    'button-counter-inline': ButtonCounterInline,
-  },
+  //components: {
+  //  'button-counter-literal': ButtonCounterLiteral,
+  //  'button-counter-inline': ButtonCounterInline,
+  //},
   data: {
     title: 'All Spots',
     loading: true,
