@@ -5,7 +5,7 @@
 
 {% block title %}Demo: React{% endblock %}
 
-{% block react_head %}
+{% block custom_head %}
 <!-- bundled react vendors from node_modules using webpack -->
 {% render_bundle 'vendor' %}
 <!-- opt-out of turbolinks caching to make react components work better -->
