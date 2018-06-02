@@ -138,11 +138,28 @@ Django REST Framework: http://localhost:8000/api/v1/spots/
 
 GraphQL: http://localhost:8000/graphql/
 
-Here is a sample GraphQL query to get you started:
+Here are some sample GraphQL queries to get you started:
 
         query {
           allSpots {
             id
+            name
+          }
+        }
+
+        query {
+           spotById (id: 5) {
+             id
+             name
+           }
+        }
+
+        query {
+           photo(id: 2343) {
+            id
+            albumId
+            url
+            thumbnailUrl
           }
         }
 

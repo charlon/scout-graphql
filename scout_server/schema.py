@@ -1,7 +1,16 @@
 import graphene
+import json
+import requests
+from collections import namedtuple
 
-from graphene_django.types import DjangoObjectType
+from graphene_django.types import DjangoObjectType, ObjectType
 from scout_server.models import *
+
+
+def _json_object_hook(d): return namedtuple('X', d.keys())(*d.values())
+
+
+def json2obj(data): return json.loads(data, object_hook=_json_object_hook)
 
 
 class SpotTypeType(DjangoObjectType):
@@ -23,12 +32,20 @@ class SpotExtendedInfoType(DjangoObjectType):
     class Meta:
         model = SpotExtendedInfo
 
+class PhotoType(ObjectType):
+    albumId = graphene.ID()
+    id = graphene.ID()
+    title = graphene.String()
+    url = graphene.String()
+    thumbnailUrl = graphene.String()
+
 
 class Query(object):
     all_spottypes = graphene.List(SpotTypeType)
     all_spots = graphene.List(SpotType)
     all_spotavailablehours = graphene.List(SpotAvailableHoursType)
     all_spotextendedinfo = graphene.List(SpotExtendedInfoType)
+    all_photos = graphene.List(PhotoType)
 
     spot_by_id = graphene.Field(SpotType,
                                 id=graphene.Int(),)
@@ -39,6 +56,23 @@ class Query(object):
     spots_by_extended_info = graphene.List(SpotType,
                                            key=graphene.String(),
                                            value=graphene.String(),)
+
+    photo_by_id = graphene.Field(PhotoType, id=graphene.Int(),)
+
+    def resolve_photo_by_id(self, info, **kwargs):
+        id = kwargs.get('id')
+        url = "https://jsonplaceholder.typicode.com/photos/{}".format(id)
+        response = requests.get(url=url)
+        data = response.text
+        the_photo = json2obj(data)
+        return the_photo
+
+    def resolve_all_photos(self, info, **kwargs):
+        url = "https://jsonplaceholder.typicode.com/photos/"
+        response = requests.get(url=url)
+        data = response.text
+        the_photos = json2obj(data)
+        return the_photos
 
     def resolve_all_spottypes(self, info, **kwargs):
         return SpotType.objects.all()

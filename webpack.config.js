@@ -2,6 +2,8 @@ var path = require("path")
 var webpack = require('webpack')
 var BundleTracker = require('webpack-bundle-tracker')
 
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
 
   mode: "development",
@@ -10,7 +12,8 @@ module.exports = {
   entry : {
     //hello: './scout_clients/static/scout_clients/react/hello',
     //world: './scout_clients/static/scout_clients/react/world',
-    apollo: './scout_clients/static/scout_clients/react/apollo'
+    apollo: './scout_clients/static/scout_clients/react/apollo',
+    demo: './scout_clients/static/scout_clients/vuejs/demo',
   },
 
   optimization: {
@@ -34,12 +37,14 @@ module.exports = {
 	},
 
   output: {
-      path: path.resolve('./scout_clients/static/scout_clients/react/bundles/'),
+      path: path.resolve('./scout_clients/static/scout_clients/bundles/'),
       filename: "[name]-[hash].js",
   },
 
   plugins: [
     new BundleTracker({filename: './webpack-stats.json'}),
+    // make sure to include the plugin for the magic
+    new VueLoaderPlugin()
   ],
 
   module: {
@@ -55,6 +60,10 @@ module.exports = {
             {
                 test: /\.css/,
                 loaders: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader'
             }
         ]
     }

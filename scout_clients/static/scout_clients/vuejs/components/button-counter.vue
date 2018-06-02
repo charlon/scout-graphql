@@ -1,0 +1,20 @@
+<template>
+  <div style="margin-bottom:25px;">
+    <button class="blah" v-on:click="count++">You clicked me {{ count }} times {{ blah }}. (single file component)</button>
+  </div>
+</template>
+
+<script>
+  export default {
+    data: function () {
+      return {
+        count: 0,
+        blah: 'single file mess!'
+      }
+    }
+  }
+</script>
+
+<style>
+.blah { color: red; }
+</style>

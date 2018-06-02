@@ -21,7 +21,11 @@
         {% for spot in spots %}
         <li class="media">
           <div class="media-left">
-            <a href="#"><img class="media-object" src="http://via.placeholder.com/60x60" alt="..."></a>
+            {% for photo in photos %}
+              {% if photo.id == spot.id %}
+              <a href="#"><img class="media-object" src="{{ photo.thumbnailUrl }} " alt="..."></a>
+              {% endif %}
+            {% endfor %}
           </div>
           <div class="media-body">
             <h4 class="media-heading">{{ spot.name }}</h4>
