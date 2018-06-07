@@ -20,7 +20,7 @@ print(BASE_DIR)
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'CHANGE_ME_IN_ENV_FILE'
+SECRET_KEY = 'CHANGE_ME_IN_IM_SECRET'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -155,7 +155,11 @@ WEBPACK_LOADER = {
 
 # compressor
 # COMPRESS_ROOT = "/tmp/some/path/for/files"
-COMPRESS_PRECOMPILERS = ()
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lesscpy {infile} {outfile}'),
+    ('text/x-sass', 'sassc {infile} {outfile}'),
+    ('text/x-scss', 'sassc {infile} {outfile}'),
+)
 COMPRESS_ENABLED = True # True if you want to compress your development build
 COMPRESS_OFFLINE = False # True if you want to compress your build offline
 COMPRESS_CSS_FILTERS = [

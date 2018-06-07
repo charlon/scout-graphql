@@ -1,6 +1,1 @@
-django
-django_compressor
-djangorestframework
-graphene_django
-django-cors-headers
-requests
+-e .
