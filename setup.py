@@ -10,7 +10,9 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name='scout-modern',
     version='0.1',
+    #packages=['scout_clients, scout_server'],
     packages=find_packages(),
+    #namespace_packages=['scout_clients, scout_server'],
     include_package_data=True,
     install_requires=[
         'setuptools',
@@ -18,12 +20,12 @@ setup(
         'django_compressor',
         'djangorestframework',
         'graphene_django',
-        'django-cors-headers,
+        'django-cors-headers',
         'django_mobileesp',
+        'django-webpack-loader',
         'requests',
         'lesscpy',
-        'libsass',
-        'uw-restclients'
+        'libsass'
     ],
     license='Apache License, Version 2.0',
     description='A Django app to ...',

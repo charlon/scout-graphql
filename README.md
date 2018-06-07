@@ -50,6 +50,15 @@ We'll explore various ways of consuming APIs and displaying data using Django:
 * Client-side Javascript (jQuery)
 * Others methods? (React, Angular, etc.)
 
+Install using Docker
+--------------------
+**Steps (make sure Docker & Docker Compose is installed)**
+
+    $ git clone https://github.com/charlon/scout-modern.git
+    $ cd scout-modern
+    $ docker-compose build django
+    $ docker-compose up
+
 Getting Started
 ---------------
 
