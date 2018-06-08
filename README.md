@@ -9,6 +9,7 @@ System Requirements
 -------------------
 * Python (3+)
 * Django (2+)
+* Docker
 
 What's Here
 -----------
