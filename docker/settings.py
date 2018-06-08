@@ -25,7 +25,7 @@ SECRET_KEY = 'CHANGE_ME_IN_IM_SECRET'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
