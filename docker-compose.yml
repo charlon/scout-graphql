@@ -10,6 +10,7 @@ services:
       - ./docker:/app/project
       - ./scout_clients:/app/scout_clients
       - ./scout_server:/app/scout_server
+      - ./webpack-stats.json:/app/webpack-stats.json
     ports:
       - "8000:8000"
     command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
