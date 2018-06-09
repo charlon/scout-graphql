@@ -2,9 +2,14 @@ version: '3'
 
 services:
   app:
+    restart: always
     build: .
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    # map the local (host) directories to their container counterparts
+    # to support live-syncing
     volumes:
-      - ./docker:/app/docker
+      - ./docker:/app/project
+      - ./scout_clients:/app/scout_clients
+      - ./scout_server:/app/scout_server
     ports:
       - "8000:8000"
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
