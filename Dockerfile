@@ -9,7 +9,10 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 
 # create an empty django 'project' on the container
-RUN django-admin.py startproject project .
+#RUN django-admin.py startproject project .
+
+# move manage.py out of dockerproj to root
+COPY dockerproj/manage.py /app/manage.py
 
 # copy contents of 'docker' settings into the project directory on container
-ADD docker /app/project/
+#ADD docker /app/project/

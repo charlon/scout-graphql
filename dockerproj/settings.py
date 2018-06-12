@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'dockerproj.urls'
 
 TEMPLATES = [
     {
@@ -76,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project.wsgi.application'
+WSGI_APPLICATION = 'dockerproj.wsgi.application'
 
 
 # Database
@@ -142,7 +142,7 @@ STATICFILES_DIRS = [
 
 # graphene (graphql python)
 GRAPHENE = {
-    'SCHEMA': 'project.schema.schema'
+    'SCHEMA': 'dockerproj.schema.schema'
 }
 
 #webpack loader (react)
