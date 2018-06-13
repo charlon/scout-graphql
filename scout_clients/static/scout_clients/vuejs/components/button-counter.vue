@@ -1,6 +1,6 @@
 <template>
   <div style="margin-bottom:25px;">
-    <button class="blah" v-on:click="count++">You clicked me {{ count }} times {{ blah }}. (single file component)</button>
+    <button class="blah" v-on:click="count++">You clicked me {{ count }} times. {{ blah }}. (single file component)</button>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
     data: function () {
       return {
         count: 0,
-        blah: 'single file mess!'
+        blah: 'This is extra!'
       }
     }
   }

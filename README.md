@@ -9,7 +9,7 @@ System Requirements
 -------------------
 * Python (3+)
 * Django (2+)
-* Virtualenv
+* Docker
 
 What's Here
 -----------
@@ -17,12 +17,9 @@ What's Here
 This sandbox includes:
 
 * README.md - this file
-* scoutserver/ - this directory contains your Django project files
-* scoutserver/settings/env.example - sample environ .env file for local settings
+* docker/ - this directory contains Django project settings used for Docker
 * scout_server/ - this directory contains your Django application (API servers)
 * scout_clients/ - this directory contains your Django application (client)
-
-* manage.py - this Python script is used to start your Django web application
 
 API Servers
 -----------
@@ -50,8 +47,8 @@ We'll explore various ways of consuming APIs and displaying data using Django:
 * Client-side Javascript (jQuery)
 * Others methods? (React, Angular, etc.)
 
-Getting Started
----------------
+Getting Started using Docker
+----------------------------
 
 These directions assume you want to develop on your local computer, and not
 from the Amazon EC2 instance itself. If you're on the Amazon EC2 instance, the
@@ -62,71 +59,46 @@ To work on the sample code, you'll need to clone your project's repository to yo
 local computer. If you haven't, do that first. You can find instructions in the
 AWS CodeStar user guide.
 
+Setup
+-----
 
-1. Create a Python3 virtual environment for your Django project. This virtual
-   environment allows you to isolate this project and install any packages you
-   need without affecting the system Python installation. At the terminal, type
-   the following commands:
+1. Clone the repository
 
-        $ virtualenv --python=python3 scout-modern-env
-        $ . scout-modern-env/bin/activate
+        $ git clone https://github.com/charlon/scout-modern.git
+        $ cd scout-modern
 
-2. Clone this repository
+Node
+----
 
-        (scout-modern-env)$ git clone https://github.com/charlon/scout-modern
-        (scout-modern-env)$ cd scout-modern
+2. Install the node dependencies for the React Demo.
 
-4. Copy the env.example file into .env. This allows you set environment variables
-   for running your application locally. After copying the sample, edit the
-   necessary environment variables to suit your local development needs. You
-   will also need to load the local environment files by running the source command:
+        $ npm install
 
-        (scout-modern-env)$ cp scoutserver/settings/env.example scoutserver/settings/.env
+Webpack
+-------
 
-5. Update the .env file using your preferred editor. For the purposes of this
-   project, you should update the SECRET_KEY variable.
-
-6. Install Python dependencies for this project:
-
-        (scout-modern-env)$ pip install -r requirements-local.txt
-
-Adding React Demo
------------------
-
-7. For the React Demo. You will need to use Node. The best way to isolate Node
-   is to create a nodeenv (installed via requirements-local.txt). You can activate after it
-   the base Python environment has been setup.
-
-   Note: If you run into the [SSL: CERTIFICATE_VERIFY_FAILED] error on Mac OS, you
-   may need to run the 'Install Certificates.command' file found in your
-   'Applications/Python 3.6' directory.
-
-        (scout-modern-env)$ nodeenv -p
-
-8. Install the node dependencies for the React Demo.
-
-        (scout-modern-env)$ npm install
-
-Start Webpack
--------------
-
-9. Start the webpack "watch mode". This will leave the webpack compiler running
+3. Start the webpack "watch mode". This will leave the webpack compiler running
    and compile bundles automatically when changes are made to the source files.
    You'll need to restart this command if you make changes to the webpack config.
 
-        (scout-modern-env)$ ./node_modules/.bin/webpack --config webpack.config.js --watch
+        $ ./node_modules/.bin/webpack --config webpack.config.js --watch
 
-Starting Django Server
-----------------------
+Docker
+------
 
-10. Apply any migrations (if needed):
+4. Docker/Docker Compose is used to containerize your local build environment
+    and deploy it to a local container so you can view your application. Docker
+    is configured to build an empty 'project' and copy the settings files located
+    in the 'docker' directory.
 
-        (scout-modern-env)$ python manage.py makemigrations --settings=scoutserver.settings.local
-        (scout-modern-env)$ python manage.py migrate --settings=scoutserver.settings.local
+        $ docker-compose up
 
-11. Start the Django server:
+5. In the case that changes are made to the Dockerfile or docker-compose.yml file,
+    you will need to rebuild the image. In this case, 'app' is the name of the
+    Docker image for the Django project.
 
-        (scout-modern-env)$ python manage.py runserver 0:8000 --settings=scoutserver.settings.local
+        $ docker-compose build app
+        $ docker-compose up
 
 View your APIs
 ---------------
@@ -166,4 +138,4 @@ Here are some sample GraphQL queries to get you started:
 View your clients
 -----------------
 
-We'll work on this after we have data and working API servers.
+Demo: http://localhost:8000/

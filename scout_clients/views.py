@@ -32,21 +32,15 @@ def classic_demo(request):
     template = loader.get_template('scout_clients/classic/demo.html')
 
     # query the graphql endpoint using requests library
-    url = 'http://localhost:8000/graphql'
-    query = { 'query' : '{ allSpots { id name buildingName latitude longitude } allPhotos { id url thumbnailUrl } }' }
-    response = requests.post(url=url, json=query)
+    url = 'http://localhost:8000/api/v1/spots/?format=json'
+    req = requests.get(url)
 
-    # turn the json response text into a python dict
-    data = json.loads(response.text)
+    # decode the json response
+    spots = req.json()
 
-    # get the spot data
-    spots = data['data']['allSpots']
-    photos = data['data']['allPhotos']
-
-    # pass the data to template using context object
+    # pass the json to template using context object
     context = {
         'hello' : "classic demo",
-        'spots' : spots,
-        'photos' : photos
+        'spots' : spots
     }
     return HttpResponse(template.render(context, request))
