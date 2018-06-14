@@ -10,8 +10,6 @@ module.exports = {
   context: __dirname,
 
   entry : {
-    //hello: './scout_clients/static/scout_clients/react/hello',
-    //world: './scout_clients/static/scout_clients/react/world',
     apollo: './scout_clients/static/scout_clients/react/apollo',
     demo: './scout_clients/static/scout_clients/vuejs/demo',
   },
@@ -48,24 +46,27 @@ module.exports = {
   ],
 
   module: {
-        rules: [
-            {
-                test: /\.jsx?$/,
-                exclude:/(node_modules|bower_components)/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'react']
-                }
-            },
-            {
-                test: /\.css/,
-                loaders: ['style-loader', 'css-loader']
-            },
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader'
-            }
-        ]
-    }
+      rules: [
+          {
+              test: /\.jsx?$/,
+              exclude:/(node_modules|bower_components)/,
+              loader: 'babel-loader',
+              query: {
+                  presets: ['es2015', 'react']
+              }
+          },
+          {
+              test: /\.css/,
+              loaders: ['style-loader', 'css-loader']
+          },
+          {
+              test: /\.vue$/,
+              loader: 'vue-loader'
+          }
+      ]
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  }
 
 }
