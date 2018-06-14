@@ -49,26 +49,31 @@ const SpotsList = ({ data: {loading, error, allSpots }}) => {
      </li>
    );
    return (
+
      <div>
-       <h2 className='apollo-header'>All Spots</h2>
+
+       <h2 className="classic-header">React.js</h2>
        <div className = "col-lg-12">
+
+         <ButtonCounter />
+
+         <h2 className='apollo-header'>All Spots</h2>
          <ul className="media-list apollo-list">
            {spotsList}
          </ul>
        </div>
      </div>
+     
    );
  };
 
 const SpotsListWithData = graphql(ALL_SPOTS_QUERY)(SpotsList);
 
 ReactDOM.render(
-  <div>
-    <h2 className="classic-header">React.js</h2>
-  <ButtonCounter />
-  <ApolloProvider client={client}>
-    <SpotsListWithData />
-  </ApolloProvider>
-</div>,
+
+
+    <ApolloProvider client={client}>
+      <SpotsListWithData />
+    </ApolloProvider>,
   document.getElementById('react_demo')
 )
