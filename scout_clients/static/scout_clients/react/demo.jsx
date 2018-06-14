@@ -6,7 +6,9 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-import styles from './demo.css'
+import styles from './demo.css';
+
+import { ButtonCounter } from './components/button-counter';
 
 const client = new ApolloClient({
   //link: new HttpLink({ uri: 'http://localhost:8000/graphql' }),
@@ -48,7 +50,7 @@ const SpotsList = ({ data: {loading, error, allSpots }}) => {
    );
    return (
      <div>
-       <h2 className='apollo-header'>Apollo Client</h2>
+       <h2 className='apollo-header'>All Spots</h2>
        <div className = "col-lg-12">
          <ul className="media-list apollo-list">
            {spotsList}
@@ -61,8 +63,12 @@ const SpotsList = ({ data: {loading, error, allSpots }}) => {
 const SpotsListWithData = graphql(ALL_SPOTS_QUERY)(SpotsList);
 
 ReactDOM.render(
+  <div>
+    <h2>dsakjf</h2>
+  <ButtonCounter />
   <ApolloProvider client={client}>
     <SpotsListWithData />
-  </ApolloProvider>,
+  </ApolloProvider>
+</div>,
   document.getElementById('react_demo')
 )
