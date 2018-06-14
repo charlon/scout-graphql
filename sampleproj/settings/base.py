@@ -154,7 +154,7 @@ WEBPACK_LOADER = {
 }
 
 # compressor
-# COMPRESS_ROOT = "/tmp/some/path/for/files"
+COMPRESS_ROOT = "/some/path/for/files"
 COMPRESS_PRECOMPILERS = (
     ('text/less', 'lesscpy {infile} {outfile}'),
     ('text/x-sass', 'sassc {infile} {outfile}'),
