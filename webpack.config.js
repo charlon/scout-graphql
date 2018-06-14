@@ -10,8 +10,8 @@ module.exports = {
   context: __dirname,
 
   entry : {
-    apollo: './scout_clients/static/scout_clients/react/apollo',
-    demo: './scout_clients/static/scout_clients/vuejs/demo',
+    react_demo: './scout_clients/static/scout_clients/react/demo',
+    vue_demo: './scout_clients/static/scout_clients/vuejs/demo',
   },
 
   optimization: {

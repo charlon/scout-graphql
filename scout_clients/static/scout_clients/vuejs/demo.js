@@ -27,7 +27,7 @@ Vue.component('button-counter-inline', {
 
 const demo = new Vue({
   delimiters: ['[[', ']]'],
-  el: '#demo',
+  el: '#vue_demo',
   components: {
     'button-counter-vue' : ButtonCounterVue
   },
