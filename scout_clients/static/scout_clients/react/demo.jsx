@@ -50,8 +50,8 @@ const SpotsList = ({ data: {loading, error, allSpots }}) => {
    );
    return (
     <div>
-      <h2 className='apollo-header'>All Spots</h2>
-      <ul className="media-list apollo-list">
+      <h2 className='react-header'>All Spots</h2>
+      <ul className="media-list react-list">
         {spotsList}
       </ul>
     </div>

@@ -36,12 +36,12 @@
 
         <button-counter-vue></button-counter-vue>
 
-        <h2>[[ title ]]</h2>
+        <h2 class="vue-header">[[ title ]]</h2>
         <div v-if="loading">
           Loading.....
         </div>
 
-        <ul class="media-list classic-list">
+        <ul class="media-list vue-list">
             <li v-for="space in spaces" class="media">
                <div class="media-left">
                   <a href="#"><img className="media-object" src="http://via.placeholder.com/60x60" alt="..." /></a>

@@ -1,0 +1,8 @@
+.classic-header { color:red; padding: 0 15px; }
+
+.vue-header {
+  color: red;
+  margin: 10px;
+}
+
+.vue-list li { margin-bottom: 10px; }

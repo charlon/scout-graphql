@@ -1,6 +1,7 @@
 import Vue from 'vue/dist/vue.js';
 import axios from 'axios';
 import ButtonCounterVue from "./components/button-counter.vue";
+require('./demo.css');
 
 Vue.component('button-counter-literal', {
   template: `

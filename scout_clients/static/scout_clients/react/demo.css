@@ -1,6 +1,8 @@
-.apollo-header {
+.classic-header { color:purple; padding: 0 15px; }
+
+.react-header {
   color: purple;
   margin: 10px;
 }
 
-.apollo-list li { margin-bottom: 10px; }
+.react-list li { margin-bottom: 10px; }
