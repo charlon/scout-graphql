@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 
+const styles = {
+  marginBottom: '25px'
+}
+
 export class ButtonCounter extends React.Component {
 
   constructor(props) {
@@ -16,10 +20,12 @@ export class ButtonCounter extends React.Component {
   }
 
   render() {
+
     return (
-      <div>
+      <div style={styles}>
         <button onClick={ this.incrementCount }>You clicked me {this.state.count} times. {this.state.blah} (exported react component)</button>
       </div>
     );
   }
+
 };
