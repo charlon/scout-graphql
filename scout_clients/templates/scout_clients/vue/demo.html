@@ -34,25 +34,9 @@
           </div>
         </button-counter-inline>
 
-        <button-counter-vue></button-counter-vue>
+        <button-counter></button-counter>
 
-        <h2 class="vue-header">[[ title ]]</h2>
-        <div v-if="loading">
-          Loading.....
-        </div>
-
-        <ul class="media-list vue-list">
-            <li v-for="space in spaces" class="media">
-               <div class="media-left">
-                  <a href="#"><img className="media-object" src="http://via.placeholder.com/60x60" alt="..." /></a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">[[ space.name ]]</h4>
-                <p>[[ space.building_name ]]<br/>
-                [[ space.latitude ]], [[ space.longitude ]]</p>
-              </div>
-           </li>
-        </ul>
+        <all-spots></all-spots>
 
     </div>
 

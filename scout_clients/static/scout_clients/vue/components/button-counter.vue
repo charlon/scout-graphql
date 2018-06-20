@@ -6,7 +6,7 @@
 
 <script>
   export default {
-    data: function () {
+    data () {
       return {
         count: 0,
         blah: 'This is extra!'

@@ -1,6 +1,6 @@
 import Vue from 'vue/dist/vue.js';
-import axios from 'axios';
-import ButtonCounterVue from "./components/button-counter.vue";
+import AllSpots from "./components/all-spots.vue";
+import ButtonCounter from "./components/button-counter.vue";
 require('./demo.css');
 
 Vue.component('button-counter-literal', {
@@ -30,24 +30,7 @@ const demo = new Vue({
   delimiters: ['[[', ']]'],
   el: '#vue_demo',
   components: {
-    'button-counter-vue' : ButtonCounterVue
-  },
-  data: {
-    title: 'All Spots',
-    loading: true,
-    spaces: null
-  },
-  mounted () {
-    this.loading = true;
-    axios
-      .get('/api/v1/spots/?format=json')
-      .then(response => {
-          this.spaces = response.data
-      })
-      .catch(error => {
-        console.log(error)
-        this.errored = true
-      })
-      .finally(() => this.loading = false)
+    'button-counter' : ButtonCounter,
+    'all-spots' : AllSpots
   }
 })
