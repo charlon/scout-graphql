@@ -48,20 +48,21 @@ module.exports = {
   module: {
       rules: [
           {
-              test: /\.jsx?$/,
-              exclude:/(node_modules|bower_components)/,
+              test: /\.vue$/,
+              loader: 'vue-loader'
+          },
+          {
+              test: /\.(js|jsx)$/,
+              exclude: /node_modules/,
               loader: 'babel-loader',
               query: {
+                  babelrc: false,
                   presets: ['es2015', 'react']
               }
           },
           {
-              test: /\.css/,
-              loaders: ['style-loader', 'css-loader']
-          },
-          {
-              test: /\.vue$/,
-              loader: 'vue-loader'
+              test: /\.(css|scss|less)/,
+              loaders: ['style-loader', 'css-loader', 'sass-loader', 'less-loader']
           }
       ]
   },
