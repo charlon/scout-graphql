@@ -62,7 +62,7 @@ const SpotsListWithData = graphql(ALL_SPOTS_QUERY)(SpotsList);
 
 ReactDOM.render(
   <div className = "col-lg-12">
-   <ButtonCounter />
+    <ButtonCounter />
     <ApolloProvider client={client}>
       <SpotsListWithData />
     </ApolloProvider>
