@@ -1,5 +1,5 @@
 import Vue from 'vue/dist/vue.js';
-import AllSpots from "./components/all-spots.vue";
+import SpotsList from "./components/spots-list.vue";
 import ButtonCounter from "./components/button-counter.vue";
 require('./demo.css');
 
@@ -31,6 +31,6 @@ const demo = new Vue({
   el: '#vue_demo',
   components: {
     'button-counter' : ButtonCounter,
-    'all-spots' : AllSpots
+    'spots-list' : SpotsList
   }
 })
