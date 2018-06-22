@@ -15,12 +15,11 @@ export class ButtonCounter extends React.Component {
     this.incrementCount = this.incrementCount.bind(this);
   }
 
-  incrementCount(){
+  incrementCount() {
     this.setState({count: this.state.count + 1});
   }
 
   render() {
-
     return (
       <div style={styles}>
         <button onClick={ this.incrementCount }>You clicked me {this.state.count} times. {this.state.blah} (exported react component)</button>

@@ -1,22 +1,24 @@
 <template>
   <div>
     <h2 class="vue-header"> {{ title }}</h2>
+
     <div v-if="loading">
       Loading.....
     </div>
 
     <ul class="media-list vue-list">
-        <li v-for="space in spaces" class="media">
+        <li v-for="spot in spots" class="media">
            <div class="media-left">
               <a href="#"><img className="media-object" src="http://via.placeholder.com/60x60" alt="..." /></a>
           </div>
           <div class="media-body">
-            <h4 class="media-heading">{{ space.name }}</h4>
-            <p>{{ space.building_name }}<br/>
-            {{ space.latitude }}, {{ space.longitude }}</p>
+            <h4 class="media-heading">{{ spot.name }}</h4>
+            <p>{{ spot.building_name }}<br/>
+            {{ spot.latitude }}, {{ spot.longitude }}</p>
           </div>
        </li>
     </ul>
+    
   </div>
 </template>
 
@@ -27,7 +29,7 @@
       return {
         title: 'All Spots',
         loading: true,
-        spaces: []
+        spots: []
       }
     },
     mounted () {
@@ -35,7 +37,7 @@
       axios
         .get('/api/v1/spots/?format=json')
         .then(response => {
-            this.spaces = response.data
+            this.spots = response.data
         })
         .catch(error => {
           console.log(error)
