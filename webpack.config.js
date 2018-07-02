@@ -1,7 +1,6 @@
-var path = require("path")
-var webpack = require('webpack')
-var BundleTracker = require('webpack-bundle-tracker')
-
+const path = require("path")
+const webpack = require('webpack')
+const BundleTracker = require('webpack-bundle-tracker')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
@@ -12,6 +11,7 @@ module.exports = {
   entry : {
     react_demo: './scout_clients/static/scout_clients/react/demo',
     vue_demo: './scout_clients/static/scout_clients/vue/demo',
+    angular_demo: './scout_clients/static/scout_clients/angular/demo',
   },
 
   optimization: {
@@ -52,6 +52,10 @@ module.exports = {
               loader: 'vue-loader'
           },
           {
+              test: /\.(ts|tsx)$/,
+              loader: 'ts-loader'
+          },
+          {
               test: /\.(js|jsx)$/,
               exclude: /node_modules/,
               loader: 'babel-loader',
@@ -67,7 +71,7 @@ module.exports = {
       ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   }
 
 }
