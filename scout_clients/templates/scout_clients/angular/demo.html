@@ -21,13 +21,14 @@
 
 <p>The following container will render independent React components!</p>
 
-<div class="row marketing"  style="border:solid 1px purple;">
+<div class="row marketing"  style="border:solid 1px blue;">
+
   <h2 class="classic-header">Angular</h2>
-  <div id="angular_demo">
-
-    <hellow-app>loading...</hellow-app>
-
+  <div class="col-lg-12">
+    <my-app></my-app>
+    <spots-list></spots-list>
   </div>
+
 </div>
 {% render_bundle 'angular_demo' %}
 

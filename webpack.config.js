@@ -11,7 +11,7 @@ module.exports = {
   entry : {
     react_demo: './scout_clients/static/scout_clients/react/demo',
     vue_demo: './scout_clients/static/scout_clients/vue/demo',
-    angular_demo: './scout_clients/static/scout_clients/angular/demo',
+    angular_demo: './scout_clients/static/scout_clients/angular/main',
   },
 
   optimization: {
