@@ -40,9 +40,17 @@ module.exports = {
   },
 
   plugins: [
+
     new BundleTracker({filename: './webpack-stats.json'}),
-    // make sure to include the plugin for the magic
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+
+    // Temporary Fix for issue: https://github.com/angular/angular/issues/11580
+    // for 'WARNING Critical dependency: the request of a dependency is an expression'
+    new webpack.ContextReplacementPlugin(
+      /(.+)?angular(\\|\/)core(.+)?/,
+      path.resolve('./scout_clients/static/scout_clients/angular'), // location of your angular src
+      {} // a map of your routes
+    )
   ],
 
   module: {
@@ -70,6 +78,7 @@ module.exports = {
           }
       ]
   },
+
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
   }
