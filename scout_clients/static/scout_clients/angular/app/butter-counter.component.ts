@@ -3,7 +3,9 @@ import { ButtonCounterComponent } from './button-counter.component';
 
 @Component({
   selector: 'butter-counter',
-  template: '<button (click) ="clickCount()">click {{ count }}</button>',
+  template: `
+    <button (click) ="clickCount()">click me... I am butter {{ count }}</button>
+    `,
 })
 
 export class ButterCounterComponent extends ButtonCounterComponent {
