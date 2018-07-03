@@ -2,19 +2,19 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'button-counter',
-  template: '<button (click) ="clickCount()">click</button>',
+  template: '<button (click) ="clickCount()">click {{ count }}</button>',
 })
 
 export class ButtonCounterComponent {
 
-  count: number = 0;
+  count: number;
 
   constructor(){
+    this.count = 0;
+  }
 
-    clickCount() : void {
-      this.count++;
-    }
-    
+  clickCount() {
+    this.count++;
   }
 
 }
