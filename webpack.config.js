@@ -1,7 +1,6 @@
-var path = require("path")
-var webpack = require('webpack')
-var BundleTracker = require('webpack-bundle-tracker')
-
+const path = require("path")
+const webpack = require('webpack')
+const BundleTracker = require('webpack-bundle-tracker')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
@@ -12,6 +11,7 @@ module.exports = {
   entry : {
     react_demo: './scout_clients/static/scout_clients/react/demo',
     vue_demo: './scout_clients/static/scout_clients/vue/demo',
+    angular_demo: './scout_clients/static/scout_clients/angular/main',
   },
 
   optimization: {
@@ -40,9 +40,17 @@ module.exports = {
   },
 
   plugins: [
+
     new BundleTracker({filename: './webpack-stats.json'}),
-    // make sure to include the plugin for the magic
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+
+    // Temporary Fix for issue: https://github.com/angular/angular/issues/11580
+    // for 'WARNING Critical dependency: the request of a dependency is an expression'
+    new webpack.ContextReplacementPlugin(
+      /(.+)?angular(\\|\/)core(.+)?/,
+      path.resolve('./scout_clients/static/scout_clients/angular'), // location of your angular src
+      {} // a map of your routes
+    )
   ],
 
   module: {
@@ -50,6 +58,10 @@ module.exports = {
           {
               test: /\.vue$/,
               loader: 'vue-loader'
+          },
+          {
+              test: /\.(ts|tsx)$/,
+              loader: 'ts-loader'
           },
           {
               test: /\.(js|jsx)$/,
@@ -66,8 +78,9 @@ module.exports = {
           }
       ]
   },
+
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.ts', '.tsx', '.js', '.jsx']
   }
 
 }

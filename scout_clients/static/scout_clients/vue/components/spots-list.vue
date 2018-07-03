@@ -18,7 +18,7 @@
           </div>
        </li>
     </ul>
-    
+
   </div>
 </template>
 
@@ -37,13 +37,13 @@
       axios
         .get('/api/v1/spots/?format=json')
         .then(response => {
-            this.spots = response.data
+          this.spots = response.data
+          this.loading = false
         })
         .catch(error => {
           console.log(error)
           this.errored = true
-        })
-        .finally(() => this.loading = false)
+        });
     }
   }
 </script>

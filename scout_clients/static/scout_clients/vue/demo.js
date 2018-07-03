@@ -26,6 +26,8 @@ Vue.component('button-counter-inline', {
   }
 })
 
+console.log("I am Vue!")
+
 const demo = new Vue({
   delimiters: ['[[', ']]'],
   el: '#vue_demo',

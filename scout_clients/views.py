@@ -28,6 +28,14 @@ def vue_demo(request):
     return HttpResponse(template.render(context, request))
 
 
+def angular_demo(request):
+    template = loader.get_template('scout_clients/angular/demo.html')
+    context = {
+        'hello': "angular demo",
+    }
+    return HttpResponse(template.render(context, request))
+
+
 def classic_demo(request):
     template = loader.get_template('scout_clients/classic/demo.html')
 
