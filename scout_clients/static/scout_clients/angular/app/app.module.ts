@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { ButtonCounterComponent } from './button-counter.component';
 import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
@@ -7,6 +8,6 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [
     BrowserModule
   ],
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent, ButtonCounterComponent ],
 })
 export class AppModule { }
