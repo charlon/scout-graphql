@@ -13,9 +13,7 @@ interface DataResponse {
   template: `
     <h2>{{title}}</h2>
 
-    <div>
-      Loading.....
-    </div>
+    <div *ngIf="loading">Loading...</div>
 
     <ul class="media-list">
         <li class ="media" *ngFor="let spot of spots">
@@ -36,7 +34,8 @@ interface DataResponse {
 export class SpotsListComponent implements OnInit {
 
   title = 'All Spots';
-  private spots  = [];
+  spots  = [];
+  loading: boolean=false;
 
   constructor( private http: HttpClient ){
 
@@ -44,9 +43,13 @@ export class SpotsListComponent implements OnInit {
 
   ngOnInit(): void { // adding the lifecycle hook ngOnInit
 
+    // show the loading message by setting it to true
+    this.loading=true;
+
     this.http.get('/api/v1/spots/?format=json').subscribe((data : any[])=>{
       //console.log(data);
-      this.spots = data;
+      this.spots = data; // load spots
+      this.loading=false; // set loading to false
     });
 
   }
