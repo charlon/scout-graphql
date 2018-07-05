@@ -10,7 +10,8 @@
 {% render_bundle 'vendor' %}
 <!-- opt-out of turbolinks caching to make react components work better -->
 <meta name="turbolinks-cache-control" content="no-cache">
-<!-- zones.js -->
+<!-- install stupid angular polyfills manually - angular 4+ compatibility -->
+<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.5.7/core.min.js"></script>
 <script type="text/javascript"  src="https://unpkg.com/zone.js@0.6.23?main=browser"></script>
 {% endblock %}
 
@@ -27,10 +28,8 @@
 
   <h2 class="classic-header">Angular</h2>
   <div id="angular_demo" class="col-lg-12">
-    <my-app></my-app>
     <button-counter></button-counter>
     <butter-counter></butter-counter>
-    <p>implement the spot list down below:</p>
     <spots-list></spots-list>
   </div>
 
