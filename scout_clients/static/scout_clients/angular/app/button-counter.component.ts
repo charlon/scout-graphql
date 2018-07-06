@@ -12,6 +12,7 @@ export class ButtonCounterComponent {
   count: number;
 
   constructor(){
+    console.log("I am Angular!")
     this.count = 0;
   }
 

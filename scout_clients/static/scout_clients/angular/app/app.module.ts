@@ -3,13 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ButtonCounterComponent } from './button-counter.component';
-import { ButterCounterComponent } from './butter-counter.component';
+//import { ButterCounterComponent } from './butter-counter.component';
 import { SpotsListComponent } from './spots-list.component';
 
 @NgModule({
   bootstrap: [
     ButtonCounterComponent,
-    ButterCounterComponent,
     SpotsListComponent
   ],
   imports: [
@@ -18,7 +17,6 @@ import { SpotsListComponent } from './spots-list.component';
   ],
   declarations: [
     ButtonCounterComponent,
-    ButterCounterComponent,
     SpotsListComponent
   ],
 })
