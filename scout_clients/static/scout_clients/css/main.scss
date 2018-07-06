@@ -4,6 +4,7 @@
 
 .bg-django {
   background: #0C4B33;
+  small { color: #44B78B; }
 }
 
 .bg-angular {
@@ -18,5 +19,9 @@
 }
 
 .bg-vue {
-  background: #4fc08d;
+  background: #fff;
+
+  h6 { color: #4fc08d !important; }
+  small { color: #2c3e50; }
+
 }
