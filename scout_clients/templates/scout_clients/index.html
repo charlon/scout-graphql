@@ -2,13 +2,48 @@
 
 {% block title %}Home{% endblock %}
 {% block content %}
-<div class="jumbotron">
-  <h1>{{hello}}</h1>
-  <p class="lead">Let's experiment with exposing data through 2 popular API server architectures. Then we'll consume the data using client apps built with various techniques.</p>
+
+<div class="d-flex align-items-center p-3 my-3 text-white-50 bg-secondary rounded box-shadow" style="background: teal;">
+  <img class="mr-3" src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-outline.svg" alt="" width="48" height="48">
+  <div class="lh-100">
+    <h6 class="mb-0 text-white lh-100">{{hello}}</h6>
+    <small>Django View and Templates</small>
+  </div>
 </div>
 
-<div class="row marketing">
-  <h2>Server API</h2>
+<div class="my-3 p-3 bg-white rounded box-shadow">
+
+  <h6 class="border-bottom border-gray pb-2 mb-0">Classic Demo</h6>
+  <div class="media text-muted pt-3">
+    <img src="http://via.placeholder.com/32x32" alt="" class="mr-2 rounded">
+    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+      <strong class="d-block text-gray-dark">@username</strong>
+      Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+    </p>
+  </div>
+  <div class="media text-muted pt-3">
+    <img src="http://via.placeholder.com/32x32" alt="" class="mr-2 rounded">
+    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+      <strong class="d-block text-gray-dark">@username</strong>
+      Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+    </p>
+  </div>
+  <div class="media text-muted pt-3">
+    <img src="http://via.placeholder.com/32x32" alt="" class="mr-2 rounded">
+    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+      <strong class="d-block text-gray-dark">@username</strong>
+      Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+    </p>
+  </div>
+  <small class="d-block text-right mt-3">
+    <a href="/classic/demo">All Classic</a>
+  </small>
+
+</div>
+
+<div class="my-3 p-3 bg-white rounded box-shadow">
+
+  <h6 class="border-bottom border-gray pb-2 mb-0">Server API</h6>
 
   <div class="col-lg-6">
     <h3>REST (via DRF)</h3>
@@ -24,8 +59,9 @@
 
 </div>
 
-<div class="row marketing">
-  <h2>Clients</h2>
+<div class="my-3 p-3 bg-white rounded box-shadow">
+
+  <h6 class="border-bottom border-gray pb-2 mb-0">Client Demos</h6>
   <div class="col-lg-6">
 
     <h4>Classic</h4>
