@@ -15,9 +15,12 @@
     <!-- jquery + turbolinks -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.0.3/turbolinks.js"></script>
-    
-    <!-- custom blocks for react or vuejs vendor files -->
-    {% block custom_head %}{% endblock %}
+    <!-- install stupid angular polyfills manually - angular 4+ compatibility -->
+    <script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.5.7/core.min.js"></script>
+    <script type="text/javascript"  src="https://unpkg.com/zone.js@0.6.23?main=browser"></script>
+
+    <!-- opt-out of turbolinks caching to make react components work better -->
+    <meta name="turbolinks-cache-control" content="no-cache">
 
     <!-- compressed css and js using django-compressor -->
     {% compress js %}
@@ -26,6 +29,9 @@
     {% compress css %}
     <link rel="stylesheet" href="{% static "scout_clients/css/main.css" %}" type="text/css">
     {% endcompress %}
+
+    <!-- load bundled vendor files using webpack loader -->
+    {% render_bundle 'vendor' %}
 
   </head>
   <body>
@@ -45,6 +51,7 @@
       <footer class="footer">
         <p>&copy; {% now "Y" %} Your Name Here</p>
       </footer>
+      
     </div> <!-- /container -->
   </body>
 </html>

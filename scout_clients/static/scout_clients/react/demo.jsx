@@ -9,6 +9,7 @@ console.log("I am React!")
 
 ReactDOM.render(
   <div className = "col-lg-12">
+    <h2>React</h2>
     <ButtonCounter />
     <SpotsList />
   </div>,
