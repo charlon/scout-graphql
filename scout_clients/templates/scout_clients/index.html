@@ -1,10 +1,13 @@
 {% extends "scout_clients/base.html" %}
 
+{% load static %}
+
 {% block title %}Home{% endblock %}
 {% block content %}
 
 <div class="my-3 p-3 bg-white rounded box-shadow">
   <h6 class="border-bottom border-gray pb-2 mb-0">Server APIs</h6>
+
   <div class="media text-muted pt-3">
     <img src="http://via.placeholder.com/32x32" alt="" class="mr-2 rounded">
     <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
@@ -25,30 +28,53 @@
       <span class="d-block">asdfdasfadsf</span>
     </div>
   </div>
+
 </div>
 
 <div class="my-3 p-3 bg-white rounded box-shadow">
-
   <h6 class="border-bottom border-gray pb-2 mb-0">Client Demos</h6>
-  <div class="col-lg-6">
 
-    <h4>Classic</h4>
-    <p>Django View &amp; Template page loaded using Turbolinks.</p>
-    <p><a href="/classic/demo/">Classic Demo</a></p>
-
-    <h4>Angular</h4>
-    <p>Django Classic pages with Angular components loaded using Webpack Loader.</p>
-    <p><a href="/angular/demo/">Angular Demo</a></p>
-
-    <h4>React</h4>
-    <p>Django Classic pages with React components loaded using Webpack Loader.</p>
-    <p><a href="/react/demo/">React Demo</a></p>
-
-    <h4>Vue</h4>
-    <p>Django Classic pages with Vue components loaded using Webpack Loader.</p>
-    <p><a href="/vue/demo/">Vue Demo</a></p>
-
+  <div class="media text-muted pt-3">
+    <img class="mr-2" src="{% static "scout_clients/img/django.png" %}" alt="" width="32" height="32">
+    <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <strong class="text-gray-dark">Django</strong>
+        <a href="/classic/demo/">Django Demo</a>
+      </div>
+      <span class="d-block">Django View &amp; Template page loaded using Turbolinks.</span>
+    </div>
   </div>
+  <div class="media text-muted pt-3">
+    <img class="mr-2" src="{% static "scout_clients/img/angular.png" %}" alt="" width="32" height="32">
+    <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <strong class="text-gray-dark">Angular</strong>
+        <a href="/angular/demo/">Angular Demo</a>
+      </div>
+      <span class="d-block">Django Classic pages with Angular components loaded using Webpack Loader.</span>
+    </div>
+  </div>
+  <div class="media text-muted pt-3">
+    <img class="mr-2" src="{% static "scout_clients/img/react.png" %}" alt="" width="32" height="32">
+    <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <strong class="text-gray-dark">React</strong>
+        <a href="/react/demo/">React Demo</a>
+      </div>
+      <span class="d-block">Django Classic pages with React components loaded using Webpack Loader.</span>
+    </div>
+  </div>
+  <div class="media text-muted pt-3">
+    <img class="mr-2" src="{% static "scout_clients/img/vue.png" %}" alt="" width="32" height="32">
+    <div class="media-body pb-3 mb-0 small lh-125">
+      <div class="d-flex justify-content-between align-items-center w-100">
+        <strong class="text-gray-dark">Vue</strong>
+        <a href="/vue/demo/">Vue Demo</a>
+      </div>
+      <span class="d-block">Django Classic pages with Vue components loaded using Webpack Loader.</span>
+    </div>
+  </div>
+
 </div>
 
 {% endblock %}
