@@ -33,34 +33,33 @@ export class SpotsList extends React.Component {
 
   render() {
 
+    console.log("spot list rendered!");
+
     let content;
 
     if (this.state.loading) {
-      content = <div>Loading...</div>;
+      content = <div className="pt-3">Loading...</div>;
     } else {
       content =
-      <ul className="media-list react-list">
-        {this.state.spots.map( spot => {
-          return (
-            <li key={spot.id} className="media">
-              <div className="media-left">
-                <a href="#"><img className="media-object" src="http://via.placeholder.com/60x60" alt="..." /></a>
-              </div>
-              <div className="media-body">
-                <h4 className="media-heading">{spot.name}</h4>
-                <p>{spot.building_name}<br/>
-                {spot.latitude}, {spot.longitude}</p>
-              </div>
+      <ul className="p-0">
+         {this.state.spots.map( spot => {
+           return (
+             <li key={spot.id} className="media text-muted pt-3">
+               <img src="http://via.placeholder.com/32x32" alt="..." className="mr-2 rounded" />
+               <p className="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                 <strong className="d-block text-gray-dark">{spot.name }</strong>
+                 {spot.building_name }<br/>
+                 {spot.latitude }, {spot.longitude }</p>
             </li>
-            );
-      })}
-    </ul>
+             );
+           })}
+      </ul>
     }
 
     return (
-     <div style={styles}>
-       <h2 className='react-header'>All Spots</h2>
-       {content}
+      <div style={styles} className="my-3 p-3 bg-white rounded box-shadow">
+        <h6 className="border-bottom border-gray pb-2 mb-0">All Spots</h6>
+        {content}
      </div>
     );
 

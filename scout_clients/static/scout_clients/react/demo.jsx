@@ -8,8 +8,7 @@ import { SpotsList } from './components/spots-list';
 console.log("I am React!")
 
 ReactDOM.render(
-  <div className = "col-lg-12">
-    <h2>React</h2>
+  <div>
     <ButtonCounter />
     <SpotsList />
   </div>,
