@@ -51,8 +51,8 @@ export class SpotsList extends React.Component {
                  {spot.building_name }<br/>
                  {spot.latitude }, {spot.longitude }</p>
             </li>
-             );
-           })}
+          );
+        })}
       </ul>
     }
 
