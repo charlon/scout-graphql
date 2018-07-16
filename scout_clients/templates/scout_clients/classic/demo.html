@@ -53,14 +53,23 @@
   <div class="my-3 p-3 bg-white rounded box-shadow">
     <h6 class="border-bottom border-gray pb-2 mb-0">Button Component</h6>
     <div class="pt-3">
-      <button type="button" class="btn btn-outline-secondary btn-sm blah">You clicked me xxx times</button>
+
+      <button type="button" id="button_counter" class="btn btn-outline-secondary btn-sm">You clicked me <span id="count_number">0</span> times.</button>
+      <script type="text/javascript">
+        var counter = 0;
+        $("#button_counter").click(function(){
+          counter++;
+          $("#count_number").text(counter);
+        });
+      </script>
+
     </div>
   </div>
 
   <div>
     <small class="text-muted">The following container will render a django template with context passed from the view!</small>
   </div>
-  
+
   <div class="my-3 p-3 bg-white rounded box-shadow">
     <h6 class="border-bottom border-gray pb-2 mb-0">All Spots</h6>
 
