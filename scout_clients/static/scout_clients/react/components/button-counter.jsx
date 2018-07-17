@@ -24,10 +24,15 @@ export class ButtonCounter extends React.Component {
     console.log("button counter rendered!");
 
     return (
-      <div style={styles} className="my-3 p-3 bg-white rounded box-shadow">
-        <h6 className="border-bottom border-gray pb-2 mb-0">Button Component</h6>
-        <div className="pt-3">
-          <button onClick={ this.incrementCount } type="button" className="btn btn-outline-secondary btn-sm blah">You clicked me {this.state.count} times. {this.state.blah} (exported react component)</button>
+      <div>
+        <div>
+          <small className="text-muted">The following component...</small>
+        </div>
+        <div style={styles} className="my-3 p-3 bg-white rounded box-shadow">
+          <h6 className="border-bottom border-gray pb-2 mb-0">Button Component</h6>
+          <div className="pt-3">
+            <button onClick={ this.incrementCount } type="button" className="btn btn-outline-secondary btn-sm blah">You clicked me {this.state.count} times. {this.state.blah} (exported react component)</button>
+          </div>
         </div>
       </div>
     );

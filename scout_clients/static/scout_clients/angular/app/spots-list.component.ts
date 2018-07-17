@@ -11,23 +11,25 @@ interface DataResponse {
 @Component({
   selector: 'spots-list',
   template: `
-    <h2>{{title}}</h2>
-
-    <div *ngIf="loading">Loading...</div>
-
-    <ul class="media-list">
-        <li class ="media" *ngFor="let spot of spots">
-           <div class="media-left">
-              <a href="#"><img class="media-object" src="http://via.placeholder.com/60x60" alt="..." /></a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">{{ spot.name }}</h4>
-            <p>{{ spot.building_name }}<br/>
-            {{ spot.latitude }}, {{ spot.longitude }}</p>
-          </div>
-       </li>
-    </ul>
-
+    <div>
+      <small class="text-muted">The following component...</small>
+    </div>
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+      <h6 class="border-bottom border-gray pb-2 mb-0">{{title}}</h6>
+      <div *ngIf="loading; else elseBlock" class="pt-3">Loading...</div>
+      <ng-template #elseBlock>
+        <ul class="p-0">
+            <li class ="media text-muted pt-3" *ngFor="let spot of spots">
+            <img src="http://via.placeholder.com/32x32" alt="" class="mr-2 rounded">
+            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+              <strong class="d-block text-gray-dark">{{ spot.name }}</strong>
+              {{ spot.building_name }}<br/>
+              {{spot.latitude }}, {{ spot.longitude }}
+            </p>
+           </li>
+        </ul>
+      </ng-template>
+    </div>
   `,
 })
 

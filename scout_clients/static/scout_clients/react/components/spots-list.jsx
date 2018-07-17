@@ -57,9 +57,14 @@ export class SpotsList extends React.Component {
     }
 
     return (
-      <div style={styles} className="my-3 p-3 bg-white rounded box-shadow">
-        <h6 className="border-bottom border-gray pb-2 mb-0">All Spots</h6>
-        {content}
+      <div>
+        <div>
+          <small className="text-muted">The following component...</small>
+        </div>
+        <div style={styles} className="my-3 p-3 bg-white rounded box-shadow">
+          <h6 className="border-bottom border-gray pb-2 mb-0">All Spots</h6>
+          {content}
+       </div>
      </div>
     );
 

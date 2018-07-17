@@ -10,32 +10,33 @@
   <img class="mr-3" src="{% static "scout_clients/img/vue.png" %}" alt="" width="48" height="48">
   <div class="lh-100">
     <h6 class="mb-0 text-white lh-100">{{hello}}</h6>
-    <small>Angular stuff</small>
+    <small>Vue demo stuff</small>
   </div>
 </div>
 
-<p>The following container will render a vue component with data recieved via an axios request.</p>
+<div id="vue_demo">
 
-<div class="row marketing" style="border:solid 1px red;">
+  <button-counter-literal></button-counter-literal>
 
-  <div id="vue_demo" class="col-lg-12">
-
-    <h2>Vue</h2>
-
-    <button-counter-literal></button-counter-literal>
-
-    <button-counter-inline inline-template>
-      <div style="margin-bottom:25px;">
-          <button v-on:click="count++">You clicked me [[ count ]] times [[ blah ]]. (inline component)</button>
+  <button-counter-inline inline-template>
+    <div>
+      <div>
+        <small class="text-muted">The following component is inline...</small>
       </div>
-    </button-counter-inline>
+      <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Button Component</h6>
+        <div class="pt-3">
+          <button type="button" class="btn btn-outline-secondary btn-sm" v-on:click="count++">You clicked me [[ count ]] times [[ blah ]]. (inline component)</button>
+        </div>
+      </div>
+    </div>
+  </button-counter-inline>
 
-    <button-counter></button-counter>
-    <spots-list></spots-list>
-
-  </div>
+  <button-counter></button-counter>
+  <spots-list></spots-list>
 
 </div>
+
 
 <!-- load bundled angular files using webpack loader -->
 {% render_bundle 'vue_demo' %}
