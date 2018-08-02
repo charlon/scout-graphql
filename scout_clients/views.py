@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 import requests
-import json
+import ujson
 
 def index(request):
     template = loader.get_template('scout_clients/index.html')
@@ -20,7 +20,7 @@ def react_demo(request):
     req = requests.get(url)
 
     # decode the json response
-    spots = json.dumps(req.json())
+    spots = ujson.dumps(req.json())
 
     context = {
         'hello': "react demo",
