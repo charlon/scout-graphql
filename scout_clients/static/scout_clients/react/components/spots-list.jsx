@@ -17,18 +17,18 @@ export class SpotsList extends React.Component {
   }
 
   componentDidMount() {
-    // because the data is already available, delay the display to make it
-    // appear faster
-    setTimeout(
-        function() {
-          this.setState({
-            spots: window.props,
-            loading: false
-          });
-        }
-        .bind(this),
-        200
-    );
+    this.state.loading = true;
+    axios
+      .get('http://curry.aca.uw.edu:8000/spots.json')
+      .then(response => {
+        this.setState({
+          spots: response.data,
+          loading: false
+        });
+      })
+      .catch(error => {
+        console.log(error)
+      });
   }
 
   render() {
