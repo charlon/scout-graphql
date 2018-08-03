@@ -61,3 +61,19 @@ def classic_demo(request):
         'spots' : spots
     }
     return HttpResponse(template.render(context, request))
+
+
+def spot_json(request):
+    template = loader.get_template('scout_clients/spots.html')
+
+    # query the graphql endpoint using requests library
+    url = 'http://localhost:8000/api/v1/spots/?format=json'
+    req = requests.get(url)
+
+    # decode the json response
+    spots = ujson.dumps(req.json())
+
+    context = {
+        'spots': spots
+    }
+    return HttpResponse(template.render(context, request))

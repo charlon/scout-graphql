@@ -8,4 +8,5 @@ urlpatterns = [
     path('react/demo/', views.react_demo, name='react_demo'),
     path('vue/demo/', views.vue_demo, name='vue_demo'),
     path('angular/demo/', views.angular_demo, name='angular_demo'),
+    path('spots/', views.spot_json, name='spot_json'),
 ]
