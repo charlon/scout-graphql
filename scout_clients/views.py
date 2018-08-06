@@ -15,17 +15,8 @@ def index(request):
 
 def react_demo(request):
     template = loader.get_template('scout_clients/react/demo.html')
-
-    # query the graphql endpoint using requests library
-    #url = 'http://localhost:8000/api/v1/spots/?format=json'
-    #req = requests.get(url)
-
-    # decode the json response
-    #spots = ujson.dumps(req.json())
-
     context = {
         'hello': "react demo",
-        #'spots': spots
     }
     return HttpResponse(template.render(context, request))
 
@@ -65,14 +56,10 @@ def classic_demo(request):
 
 
 def spot_json(request):
-    #template = loader.get_template('scout_clients/spots.html')
 
     # query the graphql endpoint using requests library
     url = 'http://localhost:8000/api/v1/spots/?format=json'
     req = requests.get(url)
-
-    # decode the json response
-    #spots = ujson.dumps(req.json())
     spots = req.json()
 
     return JsonResponse(spots, safe=False)

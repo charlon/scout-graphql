@@ -47,8 +47,8 @@ export class SpotsListComponent implements OnInit {
 
     // show the loading message by setting it to true
     this.loading=true;
-
-    this.http.get('/api/v1/spots/?format=json').subscribe((data : any[])=>{
+    
+    this.http.get('http://curry.aca.uw.edu:8000/spots.json').subscribe((data : any[])=>{
       //console.log(data);
       this.spots = data; // load spots
       this.loading=false; // set loading to false
