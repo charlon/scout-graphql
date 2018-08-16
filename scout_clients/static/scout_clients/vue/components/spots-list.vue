@@ -39,7 +39,7 @@
     mounted () {
       this.loading = true;
       axios
-        .get('/api/v1/spots/?format=json')
+        .get('http://curry.aca.uw.edu:8000/spots.json')
         .then(response => {
           this.spots = response.data
           this.loading = false

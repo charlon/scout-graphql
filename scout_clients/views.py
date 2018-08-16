@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
+from django.http import JsonResponse
 import requests
-import json
+import ujson
 
 def index(request):
     template = loader.get_template('scout_clients/index.html')
@@ -52,3 +53,13 @@ def classic_demo(request):
         'spots' : spots
     }
     return HttpResponse(template.render(context, request))
+
+
+def spot_json(request):
+
+    # query the graphql endpoint using requests library
+    url = 'http://localhost:8000/api/v1/spots/?format=json'
+    req = requests.get(url)
+    spots = req.json()
+
+    return JsonResponse(spots, safe=False)

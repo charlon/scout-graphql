@@ -25,7 +25,8 @@ setup(
         'django-webpack-loader',
         'requests',
         'lesscpy',
-        'libsass'
+        'libsass',
+        'ujson'
     ],
     license='Apache License, Version 2.0',
     description='A Django app to ...',
