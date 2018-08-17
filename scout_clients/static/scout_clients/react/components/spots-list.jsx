@@ -19,7 +19,7 @@ export class SpotsList extends React.Component {
   componentDidMount() {
     this.state.loading = true;
     axios
-      .get('http://curry.aca.uw.edu:8000/spots.json')
+      .get('/spots.json')
       .then(response => {
         this.setState({
           spots: response.data,
