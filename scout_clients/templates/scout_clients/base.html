@@ -28,11 +28,14 @@
 
     <!-- compressed css and js using django-compressor -->
     {% compress js %}
-    <script defer type="text/javascript" src="{% static "scout_clients/js/main.js" %}"></script>
+    <!--<script defer type="text/javascript" src="{% static "scout_clients/classic/main.js" %}"></script>-->
     {% endcompress %}
     {% compress css inline %}
     <link rel="stylesheet" href="{% static "scout_clients/css/main.scss" %}" type="text/x-scss">
     {% endcompress %}
+
+    <!-- load bundled classic main.js using webpack loader -->
+    {% render_bundle 'classic_demo' attrs='defer' %}
 
     <!-- load bundled vendor files using webpack loader -->
     {% render_bundle 'vendor' attrs='defer' %}

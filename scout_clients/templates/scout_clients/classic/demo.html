@@ -13,10 +13,6 @@
   </div>
 </div>
 
-<div>
-  <small class="text-muted">The following is a static template.</small>
-</div>
-
 <div id="classic_demo">
 
   <div>
@@ -28,29 +24,6 @@
     <div class="pt-3">
 
       <button type="button" id="button_counter" class="btn btn-outline-secondary btn-sm">You clicked me <span id="count_number">0</span> times.</button>
-
-      <script type="text/javascript">
-      
-        /*
-        // jquery syntax
-        var counter = 0;
-        $("#button_counter").click(function(){
-          counter++;
-          $("#count_number").text(counter);
-        });
-        */
-
-        // es5/6 syntax
-        let button = document.getElementById("button_counter"),
-        counter = 0,
-        text = document.getElementById("count_number");
-
-        button.onclick = function() {
-          counter ++;
-          text.innerHTML = counter;
-        };
-
-      </script>
 
     </div>
   </div>
