@@ -17,33 +17,6 @@
   <small class="text-muted">The following is a static template.</small>
 </div>
 
-<div class="my-3 p-3 bg-white rounded box-shadow">
-
-  <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
-  <div class="media text-muted pt-3">
-    <img src="http://via.placeholder.com/32x32" alt="" class="mr-2 rounded">
-    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-      <strong class="d-block text-gray-dark">@username</strong>
-      Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-    </p>
-  </div>
-  <div class="media text-muted pt-3">
-    <img src="http://via.placeholder.com/32x32" alt="" class="mr-2 rounded">
-    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-      <strong class="d-block text-gray-dark">@username</strong>
-      Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-    </p>
-  </div>
-  <div class="media text-muted pt-3">
-    <img src="http://via.placeholder.com/32x32" alt="" class="mr-2 rounded">
-    <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-      <strong class="d-block text-gray-dark">@username</strong>
-      Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-    </p>
-  </div>
-
-</div>
-
 <div id="classic_demo">
 
   <div>
@@ -55,12 +28,28 @@
     <div class="pt-3">
 
       <button type="button" id="button_counter" class="btn btn-outline-secondary btn-sm">You clicked me <span id="count_number">0</span> times.</button>
+
       <script type="text/javascript">
+      
+        /*
+        // jquery syntax
         var counter = 0;
         $("#button_counter").click(function(){
           counter++;
           $("#count_number").text(counter);
         });
+        */
+
+        // es5/6 syntax
+        let button = document.getElementById("button_counter"),
+        counter = 0,
+        text = document.getElementById("count_number");
+
+        button.onclick = function() {
+          counter ++;
+          text.innerHTML = counter;
+        };
+
       </script>
 
     </div>
