@@ -34,9 +34,6 @@
     <link rel="stylesheet" href="{% static "scout_clients/css/main.scss" %}" type="text/x-scss">
     {% endcompress %}
 
-    <!-- load bundled classic main.js using webpack loader -->
-    {% render_bundle 'classic_demo' attrs='defer' %}
-
     <!-- load bundled vendor files using webpack loader -->
     {% render_bundle 'vendor' attrs='defer' %}
 

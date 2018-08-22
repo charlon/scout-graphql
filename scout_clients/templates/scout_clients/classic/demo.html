@@ -1,6 +1,7 @@
 {% extends "scout_clients/base.html" %}
 
 {% load static %}
+{% load render_bundle from webpack_loader %}
 
 {% block title %}Demo: Classic Django{% endblock %}
 {% block content %}
@@ -51,5 +52,8 @@
   </div>
 
 </div>
+
+<!-- load bundled angular files using webpack loader -->
+{% render_bundle 'classic_demo' %}
 
 {% endblock %}
