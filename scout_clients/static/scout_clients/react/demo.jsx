@@ -11,10 +11,33 @@ import Counter from "./components/counter";
 
 console.log("I am React!")
 
+class Welcome extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {title: ""};
+  }
+
+  componentDidMount() {
+    this.updateTitle()
+  }
+
+  updateTitle(newTitle = "Working Title") {
+    this.setState({
+      title: newTitle
+    });
+  }
+
+  render() {
+    return (
+      <h2>{this.state.title}</h2>
+    );
+  }
+}
+
 ReactDOM.render(
   <Provider store={store}>
   <div className = "col-lg-12">
-    <h2>React</h2>
+    <Welcome ref={(welcomeComponent) => {window.welcomeComponent = welcomeComponent}} />
     <ButtonCounter />
     <Counter />
     <SpotsList />
