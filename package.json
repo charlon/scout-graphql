@@ -44,5 +44,7 @@
     "webpack-cli": "^3.0.8",
     "zone.js": "^0.8.26"
   },
-  "dependencies": {}
+  "dependencies": {
+    "redux-zero": "^4.15.1"
+  }
 }
