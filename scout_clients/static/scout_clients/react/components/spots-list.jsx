@@ -43,14 +43,16 @@ export class SpotsList extends React.Component {
         {this.state.spots.map( spot => {
           return (
             <li key={spot.id} className="media">
+            <a href="/react/detail">
               <div className="media-left">
-                <a href="#"><img className="media-object" src="http://via.placeholder.com/60x60" alt="..." /></a>
+                <img className="media-object" src="http://via.placeholder.com/60x60" alt="..." />
               </div>
               <div className="media-body">
                 <h4 className="media-heading">{spot.name}</h4>
                 <p>{spot.building_name}<br/>
                 {spot.latitude}, {spot.longitude}</p>
               </div>
+              </a>
             </li>
             );
       })}
